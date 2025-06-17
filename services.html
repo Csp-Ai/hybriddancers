@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Dancers - Services</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="urgency-bar">
+        🔥 Limited Time: First Class FREE + ASU Students Save 20% | Only 12 spots left this week!
+    </div>
+
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">Hybrid Dancers</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="instructor.html">Instructor</a></li>
+                <li><a href="events.html">Events</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="booking-widget">
+        <div class="booking-header">
+            <h2>Available Classes This Week</h2>
+            <div class="spots-left">⚡ Only 12 spots remaining!</div>
+        </div>
+
+        <div class="class-grid">
+            <div class="class-card popular">
+                <div class="class-time">Tonight 7:00 PM</div>
+                <div class="class-title">Shuffling Basics</div>
+                <div class="class-spots">3 spots left • Beginner friendly</div>
+                <button class="book-btn popular" onclick="bookClass('shuffle-basics')">Book FREE Spot</button>
+            </div>
+
+            <div class="class-card">
+                <div class="class-time">Tomorrow 6:00 PM</div>
+                <div class="class-title">Hip-Hop Fusion</div>
+                <div class="class-spots">5 spots left • All levels</div>
+                <button class="book-btn" onclick="bookClass('hiphop-fusion')">Book FREE Spot</button>
+            </div>
+
+            <div class="class-card">
+                <div class="class-time">Thursday 7:30 PM</div>
+                <div class="class-title">Contemporary Flow</div>
+                <div class="class-spots">4 spots left • Intermediate</div>
+                <button class="book-btn" onclick="bookClass('contemporary-flow')">Book FREE Spot</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+        <h2>Choose Your Dance Journey</h2>
+        <div class="discount-badge" style="display: block; text-align: center; margin-bottom: 3rem;">
+            🎓 ASU Students: Use code SUNDEVIL for 20% off!
+        </div>
+
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Drop-In Explorer</h3>
+                <div class="price">$20</div>
+                <div class="price-period">per class</div>
+                <ul class="features-list">
+                    <li>First class FREE</li>
+                    <li>No commitment required</li>
+                    <li>Perfect for busy schedules</li>
+                    <li>Access to all class styles</li>
+                    <li>Community Discord access</li>
+                </ul>
+                <button class="book-btn" onclick="bookClass('drop-in')">Start FREE Trial</button>
+            </div>
+
+            <div class="pricing-card featured">
+                <h3>Monthly Unlimited</h3>
+                <div class="price">$89</div>
+                <div class="price-period">per month</div>
+                <ul class="features-list">
+                    <li>Unlimited classes</li>
+                    <li>Priority booking</li>
+                    <li>Exclusive workshops</li>
+                    <li>Performance opportunities</li>
+                    <li>Progress tracking</li>
+                    <li>Bring-a-friend passes</li>
+                </ul>
+                <button class="book-btn" onclick="bookClass('membership')">Join The Family</button>
+            </div>
+
+            <div class="pricing-card">
+                <h3>Online Academy</h3>
+                <div class="price">$15</div>
+                <div class="price-period">per month</div>
+                <ul class="features-list">
+                    <li>50+ tutorial videos</li>
+                    <li>New content weekly</li>
+                    <li>Beginner to advanced</li>
+                    <li>Mobile app access</li>
+                    <li>Community challenges</li>
+                </ul>
+                <button class="book-btn" onclick="bookClass('online')">Start 7-Day Free Trial</button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
