@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hybrid Dancers | Services</title>
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        .pricing-section {
+            background: #1a1a1a;
+            color: white;
+            padding: 5rem 2rem;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            border-color: #667eea;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #feca57;
+            margin-bottom: 0.5rem;
+        }
+
+        .price-period {
+            color: #999;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 2rem;
+            padding: 0;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .features-list li:before {
+            content: '✓';
+            color: #4CAF50;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <section class="pricing-section">
+        <h2>Our Dance Services</h2>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <h3>Studio Classes</h3>
+                <div class="price">$18</div>
+                <div class="price-period">drop-in or $65 monthly series</div>
+                <ul class="features-list">
+                    <li>Thu/Fri/Sat 5–6 PM</li>
+                    <li>Sat 1–2 PM</li>
+                    <li>All skill levels welcome</li>
+                </ul>
+            </div>
+            <div class="pricing-card">
+                <h3>Private Lesson</h3>
+                <div class="price">$45</div>
+                <div class="price-period">per hour</div>
+                <ul class="features-list">
+                    <li>One-on-one coaching</li>
+                    <li>Flexible scheduling</li>
+                    <li>Customized for your goals</li>
+                </ul>
+            </div>
+            <div class="pricing-card">
+                <h3>Online Tutorial</h3>
+                <div class="price">$30</div>
+                <div class="price-period">one-time purchase</div>
+                <ul class="features-list">
+                    <li>Stream anytime</li>
+                    <li>Step-by-step guidance</li>
+                    <li>Access on all devices</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
