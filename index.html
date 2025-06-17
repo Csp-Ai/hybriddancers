@@ -6,11 +6,20 @@
     <title>Hybrid Dancers - First Class FREE | Dance Classes Tempe AZ</title>
     <meta name="description" content="Join 200+ dancers in Tempe! Shuffling, Hip-Hop & Contemporary fusion classes. ASU students get 20% off. Book your FREE trial class today!">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        :root {
+            --deep-red: #8B0000;
+            --gold: #FFD700;
+            --white: #ffffff;
+            --beige: #f5f5dc;
+            --tan: #d2b48c;
         }
 
         body {
@@ -22,7 +31,7 @@
 
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #ff6b6b 100%);
+            background: linear-gradient(135deg, var(--deep-red) 0%, var(--tan) 50%, var(--gold) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -83,7 +92,7 @@
         .hero .offer {
             font-size: 2rem;
             margin-bottom: 0.5rem;
-            color: #feca57;
+            color: var(--gold);
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             animation: slideInUp 1s ease-out 0.2s both;
@@ -107,20 +116,20 @@
         .cta-primary {
             display: inline-block;
             padding: 18px 40px;
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
-            color: white;
+            background: linear-gradient(45deg, var(--deep-red), var(--gold));
+            color: var(--white);
             text-decoration: none;
             border-radius: 50px;
             font-size: 1.3rem;
             font-weight: bold;
             transition: all 0.3s ease;
-            box-shadow: 0 15px 35px rgba(255,107,107,0.4);
+            box-shadow: 0 15px 35px rgba(139,0,0,0.4);
             border: 2px solid transparent;
         }
 
         .cta-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 20px 45px rgba(255,107,107,0.6);
+            box-shadow: 0 20px 45px rgba(139,0,0,0.6);
         }
 
         .cta-secondary {
@@ -146,8 +155,8 @@
             position: fixed;
             top: 0;
             width: 100%;
-            background: linear-gradient(90deg, #ff6b6b, #feca57);
-            color: white;
+            background: linear-gradient(90deg, var(--deep-red), var(--gold));
+            color: var(--white);
             text-align: center;
             padding: 8px;
             font-weight: bold;
@@ -197,7 +206,7 @@
         }
 
         .nav-links a:hover {
-            color: #feca57;
+            color: var(--gold);
         }
 
         .booking-widget {
@@ -223,8 +232,8 @@
         }
 
         .spots-left {
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
-            color: white;
+            background: linear-gradient(45deg, var(--deep-red), var(--gold));
+            color: var(--white);
             padding: 8px 16px;
             border-radius: 20px;
             font-weight: bold;
@@ -250,14 +259,14 @@
         }
 
         .class-card:hover {
-            border-color: #667eea;
+            border-color: var(--deep-red);
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(102,126,234,0.2);
+            box-shadow: 0 10px 30px rgba(139,0,0,0.2);
         }
 
         .class-card.popular {
-            border-color: #ff6b6b;
-            background: linear-gradient(135deg, rgba(255,107,107,0.05), rgba(254,202,87,0.05));
+            border-color: var(--deep-red);
+            background: linear-gradient(135deg, rgba(139,0,0,0.05), rgba(210,180,140,0.05));
         }
 
         .class-card.popular::before {
@@ -265,7 +274,7 @@
             position: absolute;
             top: -1px;
             right: -1px;
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            background: linear-gradient(45deg, var(--deep-red), var(--gold));
             color: white;
             padding: 4px 12px;
             font-size: 0.8rem;
@@ -275,7 +284,7 @@
 
         .class-time {
             font-weight: bold;
-            color: #667eea;
+            color: var(--deep-red);
             margin-bottom: 0.5rem;
         }
 
@@ -287,7 +296,7 @@
         }
 
         .class-spots {
-            color: #ff6b6b;
+            color: var(--deep-red);
             font-size: 0.9rem;
             font-weight: bold;
             margin-bottom: 1rem;
@@ -296,8 +305,8 @@
         .book-btn {
             width: 100%;
             padding: 12px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
+            background: linear-gradient(45deg, var(--deep-red), var(--tan));
+            color: var(--white);
             border: none;
             border-radius: 25px;
             font-weight: bold;
@@ -307,11 +316,11 @@
 
         .book-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
+            box-shadow: 0 5px 15px rgba(139,0,0,0.4);
         }
 
         .book-btn.popular {
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            background: linear-gradient(45deg, var(--deep-red), var(--gold));
         }
 
         .section {
@@ -353,7 +362,7 @@
         .stat-number {
             font-size: 3rem;
             font-weight: bold;
-            color: #667eea;
+            color: var(--deep-red);
             display: block;
         }
 
@@ -371,11 +380,11 @@
         }
 
         .testimonial {
-            background: white;
+            background: var(--white);
             padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            border-left: 4px solid #667eea;
+            border-left: 4px solid var(--deep-red);
         }
 
         .testimonial-text {
@@ -387,7 +396,7 @@
 
         .testimonial-author {
             font-weight: bold;
-            color: #667eea;
+            color: var(--deep-red);
         }
 
         .instagram-feed {
@@ -404,7 +413,7 @@
 
         .instagram-post {
             aspect-ratio: 1;
-            background: linear-gradient(45deg, #667eea, #764ba2);
+            background: linear-gradient(45deg, var(--deep-red), var(--tan));
             border-radius: 15px;
             display: flex;
             align-items: center;
@@ -419,8 +428,8 @@
         }
 
         .pearla-section {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            background: linear-gradient(135deg, var(--deep-red), var(--tan));
+            color: var(--white);
             padding: 5rem 2rem;
             text-align: center;
         }
@@ -465,11 +474,11 @@
 
         .pricing-card:hover {
             transform: translateY(-10px);
-            border-color: #667eea;
+            border-color: var(--deep-red);
         }
 
         .pricing-card.featured {
-            border-color: #feca57;
+            border-color: var(--gold);
             background: rgba(254,202,87,0.1);
             transform: scale(1.05);
         }
@@ -480,8 +489,8 @@
             top: -1px;
             left: 50%;
             transform: translateX(-50%);
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
-            color: white;
+            background: linear-gradient(45deg, var(--deep-red), var(--gold));
+            color: var(--white);
             padding: 8px 20px;
             font-size: 0.8rem;
             font-weight: bold;
@@ -491,7 +500,7 @@
         .price {
             font-size: 3rem;
             font-weight: bold;
-            color: #feca57;
+            color: var(--gold);
             margin-bottom: 0.5rem;
         }
 
@@ -519,8 +528,8 @@
         }
 
         .discount-badge {
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
-            color: white;
+            background: linear-gradient(45deg, var(--deep-red), var(--gold));
+            color: var(--white);
             padding: 8px 16px;
             border-radius: 20px;
             font-weight: bold;
@@ -549,15 +558,15 @@
 
         .faq-question {
             padding: 1.5rem;
-            background: #667eea;
-            color: white;
+            background: var(--deep-red);
+            color: var(--white);
             font-weight: bold;
             cursor: pointer;
             transition: background 0.3s ease;
         }
 
         .faq-question:hover {
-            background: #5a6fd8;
+            background: #600;
         }
 
         .faq-answer {
@@ -585,7 +594,7 @@
 
         .footer-section h3 {
             margin-bottom: 1rem;
-            color: #feca57;
+            color: var(--gold);
         }
 
         .footer-section p, .footer-section a {
@@ -595,7 +604,7 @@
         }
 
         .footer-section a:hover {
-            color: #667eea;
+            color: var(--deep-red);
         }
 
         .social-links {
@@ -605,7 +614,7 @@
         }
 
         .social-links a {
-            background: #667eea;
+            background: var(--deep-red);
             color: white;
             width: 40px;
             height: 40px;
@@ -617,13 +626,13 @@
         }
 
         .social-links a:hover {
-            background: #feca57;
+            background: var(--gold);
             transform: translateY(-2px);
         }
 
         .email-signup {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
+            background: linear-gradient(45deg, var(--deep-red), var(--tan));
+            color: var(--white);
             padding: 3rem 2rem;
             text-align: center;
             margin: 3rem 0;
@@ -646,7 +655,7 @@
 
         .email-btn {
             padding: 15px 30px;
-            background: #feca57;
+            background: var(--gold);
             color: #1a1a1a;
             border: none;
             border-radius: 25px;
@@ -656,8 +665,8 @@
         }
 
         .email-btn:hover {
-            background: #ff6b6b;
-            color: white;
+            background: var(--deep-red);
+            color: var(--white);
         }
 
         @keyframes slideInUp {
@@ -768,7 +777,7 @@
 </head>
 <body>
     <div class="urgency-bar">
-        🔥 Limited Time: First Class FREE + ASU Students Save 20% | Only 12 spots left this week!
+        🔥 Limited spots this week—join Tempe's dance community today!
     </div>
 
     <nav class="nav">
@@ -787,10 +796,10 @@
         <div class="hero-content">
             <div class="hero-badge">🏆 Tempe's #1 Dance Fusion Studio</div>
             <h1>Hybrid Dancers</h1>
-            <div class="offer">FIRST CLASS FREE!</div>
+            <div class="offer">START YOUR JOURNEY</div>
             <p class="tagline">Where Shuffling, Hip-Hop & Contemporary Create Magic<br>Join 200+ dancers in Tempe's most energetic community</p>
             <div class="cta-container">
-                <a href="#classes" class="cta-primary">Book Your FREE Trial 🎉</a>
+                <a href="#classes" class="cta-primary">View Class Schedule</a>
                 <a href="#about" class="cta-secondary">Meet Pearla</a>
             </div>
         </div>
@@ -891,9 +900,6 @@
 
     <section id="pricing" class="pricing-section">
         <h2>Choose Your Dance Journey</h2>
-        <div class="discount-badge" style="display: block; text-align: center; margin-bottom: 3rem;">
-            🎓 ASU Students: Use code SUNDEVIL for 20% off!
-        </div>
         
         <div class="pricing-grid">
             <div class="pricing-card">
@@ -901,13 +907,13 @@
                 <div class="price">$20</div>
                 <div class="price-period">per class</div>
                 <ul class="features-list">
-                    <li>First class FREE</li>
+                    <li>Intro class included</li>
                     <li>No commitment required</li>
                     <li>Perfect for busy schedules</li>
                     <li>Access to all class styles</li>
                     <li>Community Discord access</li>
                 </ul>
-                <button class="book-btn" onclick="bookClass('drop-in')">Start FREE Trial</button>
+                <button class="book-btn" onclick="bookClass('drop-in')">Book a Class</button>
             </div>
             
             <div class="pricing-card featured">
