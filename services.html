@@ -1,119 +1,358 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hybrid Dancers | Services</title>
-    <style>
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            margin: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Class schedules and pricing options for Hybrid Dancers in Tempe, Arizona.">
+  <title>Hybrid Dancers - Services</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      margin: 0;
+    }
 
-        .pricing-section {
-            background: #1a1a1a;
-            color: white;
-            padding: 5rem 2rem;
-        }
+    .pricing-section {
+      background: #1a1a1a;
+      color: white;
+      padding: 5rem 2rem;
+    }
 
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
 
-        .pricing-card {
-            background: rgba(255,255,255,0.05);
-            border: 2px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            backdrop-filter: blur(10px);
-        }
+    .pricing-card {
+      background: rgba(255,255,255,0.05);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 2.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      backdrop-filter: blur(10px);
+    }
 
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            border-color: #667eea;
-        }
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      border-color: #8B0000;
+    }
 
-        .price {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #feca57;
-            margin-bottom: 0.5rem;
-        }
+    .price {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #feca57;
+      margin-bottom: 0.5rem;
+    }
 
-        .price-period {
-            color: #999;
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
+    .price-period {
+      color: #999;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
 
-        .features-list {
-            list-style: none;
-            margin-bottom: 2rem;
-            padding: 0;
-        }
+    .features-list {
+      list-style: none;
+      margin-bottom: 2rem;
+      padding: 0;
+    }
 
-        .features-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
+    .features-list li {
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
 
-        .features-list li:before {
-            content: '✓';
-            color: #4CAF50;
-            font-weight: bold;
-            margin-right: 0.5rem;
-        }
-    </style>
+    .features-list li:before {
+      content: '✓';
+      color: #4CAF50;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    .urgency-bar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(90deg, #8B0000, #FFD700);
+      color: white;
+      text-align: center;
+      padding: 8px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      z-index: 1001;
+    }
+
+    .nav {
+      position: fixed;
+      top: 40px;
+      width: 100%;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(15px);
+      z-index: 1000;
+      padding: 1rem 2rem;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: white;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: #FFD700;
+    }
+
+    .booking-widget {
+      background: white;
+      padding: 3rem 2rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+      border-radius: 20px;
+      max-width: 1000px;
+      margin: 150px auto 0;
+      position: relative;
+      z-index: 3;
+    }
+
+    .booking-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .booking-header h2 {
+      font-size: 2.2rem;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .spots-left {
+      background: linear-gradient(45deg, #8B0000, #FFD700);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+
+    .class-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .class-card {
+      border: 2px solid #f0f0f0;
+      border-radius: 15px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .class-card:hover {
+      border-color: #8B0000;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(139,0,0,0.2);
+    }
+
+    .class-card.popular::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -1px;
+      right: -1px;
+      background: linear-gradient(45deg, #8B0000, #FFD700);
+      color: white;
+      padding: 4px 12px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      border-radius: 0 15px 0 15px;
+    }
+
+    .class-time {
+      font-weight: bold;
+      color: #8B0000;
+      margin-bottom: 0.5rem;
+    }
+
+    .class-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    .class-spots {
+      color: #8B0000;
+      font-size: 0.9rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+    }
+
+    .book-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(45deg, #8B0000, #d2b48c);
+      color: white;
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .book-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(139,0,0,0.4);
+    }
+
+    .discount-badge {
+      background: linear-gradient(45deg, #8B0000, #FFD700);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.9rem;
+      margin: 2rem auto 3rem;
+      text-align: center;
+      display: block;
+      max-width: fit-content;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+  </style>
 </head>
 <body>
-    <section class="pricing-section">
-        <h2>Our Dance Services</h2>
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>Studio Classes</h3>
-                <div class="price">$18</div>
-                <div class="price-period">drop-in or $65 monthly series</div>
-                <ul class="features-list">
-                    <li>Thu/Fri/Sat 5–6 PM</li>
-                    <li>Sat 1–2 PM</li>
-                    <li>All skill levels welcome</li>
-                </ul>
-            </div>
-            <div class="pricing-card">
-                <h3>Private Lesson</h3>
-                <div class="price">$45</div>
-                <div class="price-period">per hour</div>
-                <ul class="features-list">
-                    <li>One-on-one coaching</li>
-                    <li>Flexible scheduling</li>
-                    <li>Customized for your goals</li>
-                </ul>
-            </div>
-            <div class="pricing-card">
-                <h3>Online Tutorial</h3>
-                <div class="price">$30</div>
-                <div class="price-period">one-time purchase</div>
-                <ul class="features-list">
-                    <li>Stream anytime</li>
-                    <li>Step-by-step guidance</li>
-                    <li>Access on all devices</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <script>
-        function bookClass(name) {
-            window.location.href = 'booking.html?class=' + encodeURIComponent(name);
-        }
-    </script>
+  <div class="urgency-bar">
+    🔥 Limited Time: First Class FREE + ASU Students Save 20% | Only 12 spots left this week!
+  </div>
+
+  <nav class="nav">
+    <div class="nav-container">
+      <div class="logo">Hybrid Dancers</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="instructor.html">Instructor</a></li>
+        <li><a href="events.html">Events</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="booking-widget">
+    <div class="booking-header">
+      <h2>Available Classes This Week</h2>
+      <div class="spots-left">⚡ Only 12 spots remaining!</div>
+    </div>
+
+    <div class="class-grid">
+      <div class="class-card popular">
+        <div class="class-time">Tonight 7:00 PM</div>
+        <div class="class-title">Shuffling Basics</div>
+        <div class="class-spots">3 spots left • Beginner friendly</div>
+        <button class="book-btn" onclick="bookClass('shuffle-basics')">Book FREE Spot</button>
+      </div>
+
+      <div class="class-card">
+        <div class="class-time">Tomorrow 6:00 PM</div>
+        <div class="class-title">Hip-Hop Fusion</div>
+        <div class="class-spots">5 spots left • All levels</div>
+        <button class="book-btn" onclick="bookClass('hiphop-fusion')">Book FREE Spot</button>
+      </div>
+
+      <div class="class-card">
+        <div class="class-time">Thursday 7:30 PM</div>
+        <div class="class-title">Contemporary Flow</div>
+        <div class="class-spots">4 spots left • Intermediate</div>
+        <button class="book-btn" onclick="bookClass('contemporary-flow')">Book FREE Spot</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing" class="pricing-section">
+    <h2>Choose Your Dance Journey</h2>
+    <div class="discount-badge">🎓 ASU Students: Use code SUNDEVIL for 20% off!</div>
+
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3>Drop-In Explorer</h3>
+        <div class="price">$20</div>
+        <div class="price-period">per class</div>
+        <ul class="features-list">
+          <li>First class FREE</li>
+          <li>No commitment required</li>
+          <li>Perfect for busy schedules</li>
+          <li>Access to all class styles</li>
+          <li>Community Discord access</li>
+        </ul>
+        <button class="book-btn" onclick="bookClass('drop-in')">Start FREE Trial</button>
+      </div>
+
+      <div class="pricing-card featured">
+        <h3>Monthly Unlimited</h3>
+        <div class="price">$89</div>
+        <div class="price-period">per month</div>
+        <ul class="features-list">
+          <li>Unlimited classes</li>
+          <li>Priority booking</li>
+          <li>Exclusive workshops</li>
+          <li>Performance opportunities</li>
+          <li>Progress tracking</li>
+          <li>Bring-a-friend passes</li>
+        </ul>
+        <button class="book-btn" onclick="bookClass('membership')">Join The Family</button>
+      </div>
+
+      <div class="pricing-card">
+        <h3>Online Academy</h3>
+        <div class="price">$15</div>
+        <div class="price-period">per month</div>
+        <ul class="features-list">
+          <li>50+ tutorial videos</li>
+          <li>New content weekly</li>
+          <li>Beginner to advanced</li>
+          <li>Mobile app access</li>
+          <li>Community challenges</li>
+        </ul>
+        <button class="book-btn" onclick="bookClass('online')">Start 7-Day Free Trial</button>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function bookClass(name) {
+      window.location.href = 'booking.html?class=' + encodeURIComponent(name);
+    }
+  </script>
 </body>
 </html>
