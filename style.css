@@ -755,3 +755,34 @@
             margin-bottom: 2rem;
             line-height: 1.6;
         }
+
+        .instagram-reels {
+            background: linear-gradient(135deg, #8C1D40, #FFB300);
+            color: #F5F5DC;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .reels-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .reel-video {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .follow-btn {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: #FFB300;
+            color: #8C1D40;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+        }
