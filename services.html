@@ -112,7 +112,7 @@
     </section>
     <script>
         function bookClass(name) {
-            console.log('Booking class:', name);
+            window.location.href = 'booking.html?class=' + encodeURIComponent(name);
         }
     </script>
 </body>
