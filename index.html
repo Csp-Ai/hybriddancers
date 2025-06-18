@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hybrid Dancers - First Class FREE | Dance Classes Tempe AZ</title>
     <meta name="description" content="Join 200+ dancers in Tempe! Shuffling, Hip-Hop & Contemporary fusion classes. ASU students get 20% off. Book your FREE trial class today!">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="urgency-bar">
-        🔥 Limited Time: First Class FREE + ASU Students Save 20% | Only 12 spots left this week!
+        🔥 Limited spots this week—join Tempe's dance community today!
     </div>
 
     <nav class="nav">
@@ -19,6 +20,8 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="instructor.html">Instructor</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#community">Community</a></li>
                 <li><a href="events.html">Events</a></li>
             </ul>
         </div>
@@ -28,11 +31,41 @@
         <div class="hero-content">
             <div class="hero-badge">🏆 Tempe's #1 Dance Fusion Studio</div>
             <h1>Hybrid Dancers</h1>
-            <div class="offer">FIRST CLASS FREE!</div>
+            <div class="offer">START YOUR JOURNEY</div>
             <p class="tagline">Where Shuffling, Hip-Hop & Contemporary Create Magic<br>Join 200+ dancers in Tempe's most energetic community</p>
             <div class="cta-container">
                 <a href="services.html" class="cta-primary">Book Your FREE Trial 🎉</a>
                 <a href="instructor.html" class="cta-secondary">Meet Pearla</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="booking-widget">
+        <div class="booking-header">
+            <h2>Available Classes This Week</h2>
+            <div class="spots-left">⚡ Only 12 spots remaining!</div>
+        </div>
+        
+        <div class="class-grid">
+            <div class="class-card popular">
+                <div class="class-time">Tonight 7:00 PM</div>
+                <div class="class-title">Shuffling Basics</div>
+                <div class="class-spots">3 spots left • Beginner friendly</div>
+                <button class="book-btn popular" onclick="bookClass('shuffle-basics')">Book FREE Spot</button>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-time">Tomorrow 6:00 PM</div>
+                <div class="class-title">Hip-Hop Fusion</div>
+                <div class="class-spots">5 spots left • All levels</div>
+                <button class="book-btn" onclick="bookClass('hiphop-fusion')">Book FREE Spot</button>
+            </div>
+            
+            <div class="class-card">
+                <div class="class-time">Thursday 7:30 PM</div>
+                <div class="class-title">Contemporary Flow</div>
+                <div class="class-spots">4 spots left • Intermediate</div>
+                <button class="book-btn" onclick="bookClass('contemporary-flow')">Book FREE Spot</button>
             </div>
         </div>
     </section>
@@ -83,5 +116,12 @@
         </div>
     </section>
 
+    <!-- Keep your footer or additional sections here -->
+
+    <script>
+        function bookClass(name) {
+            window.location.href = 'booking.html?class=' + encodeURIComponent(name);
+        }
+    </script>
 </body>
 </html>
