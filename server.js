@@ -24,8 +24,8 @@ app.post('/create-checkout-session', async (req, res) => {
         },
       ],
       metadata: { name, email, classType },
-      success_url: 'https://hybriddancers.com/thank-you.html',
-      cancel_url: 'https://hybriddancers.com/booking.html',
+      success_url: 'https://www.hybriddancers.com/thank-you.html',
+      cancel_url: 'https://www.hybriddancers.com/booking.html',
     });
 
     res.json({ id: session.id });

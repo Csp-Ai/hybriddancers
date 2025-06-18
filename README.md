@@ -31,3 +31,16 @@ To run the booking server with Stripe Checkout:
 npm install
 npm start
 ```
+
+## 🌐 Custom Domain with Firebase Hosting
+
+To serve the site on `www.hybriddancers.com`, configure your DNS records as follows:
+
+| Type | Host | Value |
+|------|------|-------|
+| `A`  | `@`  | `199.36.158.100` |
+| `A`  | `www`| `199.36.158.100` |
+
+Remove any existing records that point to GitHub Pages or other providers (for example the `185.199.x.x` records or a `CNAME` to `csp-ai.github.io`). After updating, allow DNS to propagate and let Firebase provision the SSL certificate. Once verification is complete, `https://www.hybriddancers.com` will load securely.
+
+
