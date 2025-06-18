@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Class | Hybrid Dancers</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #8B0000 0%, #d2b48c 50%, #FFD700 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .booking-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 0.75rem;
+            background: linear-gradient(45deg, #8B0000, #FFD700);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #8B0000, #d2b48c);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">Hybrid Dancers</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="instructor.html">Instructor</a></li>
+                <li><a href="index.html#pricing">Pricing</a></li>
+                <li><a href="index.html#community">Community</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li class="account-link"><a id="accountLink" href="login.html">Log In</a></li>
+                <li id="welcomeMsg" class="welcome-msg" style="display:none;"></li>
+                <li class="account-link" id="logoutNavItem" style="display:none;"><a id="logoutNav" href="#">Log Out</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="booking-card">
+        <h1>Book Your Class</h1>
+        <form id="booking-form">
+            <label>
+                Name
+                <input type="text" name="name" required>
+            </label>
+            <label>
+                Email
+                <input type="email" name="email" required>
+            </label>
+            <label>
+                Class Type
+                <select name="classType" required>
+                    <option value="Shuffling">Shuffling</option>
+                    <option value="Hip-Hop">Hip-Hop</option>
+                    <option value="Contemporary">Contemporary</option>
+                </select>
+            </label>
+            <button type="submit">Book Drop-In for $20</button>
+        </form>
+        <p class="back-link"><a href="index.html">Back to Home</a></p>
+    </div>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="booking.js"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="scripts.js"></script>
+    <script type="module" src="auth.js"></script>
+  </body>
+</html>

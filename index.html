@@ -5,779 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hybrid Dancers - First Class FREE | Dance Classes Tempe AZ</title>
     <meta name="description" content="Join 200+ dancers in Tempe! Shuffling, Hip-Hop & Contemporary fusion classes. ASU students get 20% off. Book your FREE trial class today!">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            line-height: 1.6;
-            color: #1a1a1a;
-            overflow-x: hidden;
-        }
-
-        .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #ff6b6b 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.3);
-            z-index: 1;
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 0;
-        }
-
-        .hero-content {
-            z-index: 2;
-            max-width: 900px;
-            padding: 0 20px;
-            position: relative;
-        }
-
-        .hero-badge {
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.3);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-            animation: pulse 2s infinite;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1rem;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            animation: slideInUp 1s ease-out;
-        }
-
-        .hero .offer {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: #feca57;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            animation: slideInUp 1s ease-out 0.2s both;
-        }
-
-        .hero .tagline {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            opacity: 0.95;
-            animation: slideInUp 1s ease-out 0.4s both;
-        }
-
-        .cta-container {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: slideInUp 1s ease-out 0.6s both;
-        }
-
-        .cta-primary {
-            display: inline-block;
-            padding: 18px 40px;
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.3rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            box-shadow: 0 15px 35px rgba(255,107,107,0.4);
-            border: 2px solid transparent;
-        }
-
-        .cta-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 45px rgba(255,107,107,0.6);
-        }
-
-        .cta-secondary {
-            display: inline-block;
-            padding: 18px 40px;
-            background: rgba(255,255,255,0.1);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255,255,255,0.3);
-            backdrop-filter: blur(10px);
-        }
-
-        .cta-secondary:hover {
-            background: rgba(255,255,255,0.2);
-            transform: translateY(-2px);
-        }
-
-        .urgency-bar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: linear-gradient(90deg, #ff6b6b, #feca57);
-            color: white;
-            text-align: center;
-            padding: 8px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            z-index: 1001;
-            animation: slideInDown 0.5s ease-out;
-        }
-
-        .nav {
-            position: fixed;
-            top: 40px;
-            width: 100%;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(15px);
-            z-index: 1000;
-            padding: 1rem 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: white;
-            font-weight: 600;
-            transition: color 0.3s ease;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-        }
-
-        .nav-links a:hover {
-            color: #feca57;
-        }
-
-        .booking-widget {
-            background: white;
-            padding: 3rem 2rem;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
-            border-radius: 20px;
-            max-width: 1000px;
-            margin: -100px auto 0;
-            position: relative;
-            z-index: 3;
-        }
-
-        .booking-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .booking-header h2 {
-            font-size: 2.2rem;
-            color: #333;
-            margin-bottom: 0.5rem;
-        }
-
-        .spots-left {
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            display: inline-block;
-            animation: pulse 2s infinite;
-        }
-
-        .class-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .class-card {
-            border: 2px solid #f0f0f0;
-            border-radius: 15px;
-            padding: 1.5rem;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .class-card:hover {
-            border-color: #667eea;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(102,126,234,0.2);
-        }
-
-        .class-card.popular {
-            border-color: #ff6b6b;
-            background: linear-gradient(135deg, rgba(255,107,107,0.05), rgba(254,202,87,0.05));
-        }
-
-        .class-card.popular::before {
-            content: 'MOST POPULAR';
-            position: absolute;
-            top: -1px;
-            right: -1px;
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
-            color: white;
-            padding: 4px 12px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            border-radius: 0 15px 0 15px;
-        }
-
-        .class-time {
-            font-weight: bold;
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-
-        .class-title {
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-
-        .class-spots {
-            color: #ff6b6b;
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .book-btn {
-            width: 100%;
-            padding: 12px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .book-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102,126,234,0.4);
-        }
-
-        .book-btn.popular {
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
-        }
-
-        .section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section h2 {
-            font-size: 2.8rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            color: #333;
-            font-weight: 800;
-        }
-
-        .social-proof {
-            background: #f8f9fa;
-            padding: 4rem 2rem;
-        }
-
-        .social-proof-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .community-stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #667eea;
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 1.1rem;
-            color: #666;
-            font-weight: 600;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .testimonial {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-            border-left: 4px solid #667eea;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            font-weight: bold;
-            color: #667eea;
-        }
-
-        .instagram-feed {
-            text-align: center;
-            margin-top: 2rem;
-        }
-
-        .instagram-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .instagram-post {
-            aspect-ratio: 1;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            transition: transform 0.3s ease;
-        }
-
-        .instagram-post:hover {
-            transform: scale(1.05);
-        }
-
-        .pearla-section {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .pearla-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .pearla-video {
-            width: 100%;
-            max-width: 600px;
-            border-radius: 20px;
-            margin-bottom: 2rem;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .pricing-section {
-            background: #1a1a1a;
-            color: white;
-            padding: 5rem 2rem;
-        }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .pricing-card {
-            background: rgba(255,255,255,0.05);
-            border: 2px solid rgba(255,255,255,0.1);
-            border-radius: 20px;
-            padding: 2.5rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            backdrop-filter: blur(10px);
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            border-color: #667eea;
-        }
-
-        .pricing-card.featured {
-            border-color: #feca57;
-            background: rgba(254,202,87,0.1);
-            transform: scale(1.05);
-        }
-
-        .pricing-card.featured::before {
-            content: 'BEST VALUE';
-            position: absolute;
-            top: -1px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
-            color: white;
-            padding: 8px 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
-            border-radius: 0 0 15px 15px;
-        }
-
-        .price {
-            font-size: 3rem;
-            font-weight: bold;
-            color: #feca57;
-            margin-bottom: 0.5rem;
-        }
-
-        .price-period {
-            color: #999;
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .features-list {
-            list-style: none;
-            margin-bottom: 2rem;
-        }
-
-        .features-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .features-list li:before {
-            content: '✓';
-            color: #4CAF50;
-            font-weight: bold;
-            margin-right: 0.5rem;
-        }
-
-        .discount-badge {
-            background: linear-gradient(45deg, #ff6b6b, #feca57);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-
-        .faq-section {
-            background: #f8f9fa;
-            padding: 5rem 2rem;
-        }
-
-        .faq-grid {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        .faq-question {
-            padding: 1.5rem;
-            background: #667eea;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .faq-question:hover {
-            background: #5a6fd8;
-        }
-
-        .faq-answer {
-            padding: 1.5rem;
-            display: none;
-        }
-
-        .faq-answer.active {
-            display: block;
-        }
-
-        .footer {
-            background: #1a1a1a;
-            color: white;
-            padding: 4rem 2rem 2rem;
-        }
-
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: #feca57;
-        }
-
-        .footer-section p, .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            line-height: 1.8;
-        }
-
-        .footer-section a:hover {
-            color: #667eea;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            background: #667eea;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: #feca57;
-            transform: translateY(-2px);
-        }
-
-        .email-signup {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-            margin: 3rem 0;
-        }
-
-        .email-form {
-            display: flex;
-            max-width: 500px;
-            margin: 2rem auto 0;
-            gap: 1rem;
-        }
-
-        .email-input {
-            flex: 1;
-            padding: 15px;
-            border: none;
-            border-radius: 25px;
-            font-size: 1rem;
-        }
-
-        .email-btn {
-            padding: 15px 30px;
-            background: #feca57;
-            color: #1a1a1a;
-            border: none;
-            border-radius: 25px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .email-btn:hover {
-            background: #ff6b6b;
-            color: white;
-        }
-
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero .offer {
-                font-size: 1.5rem;
-            }
-            
-            .cta-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .community-stats {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-            
-            .email-form {
-                flex-direction: column;
-            }
-            
-            .booking-widget {
-                margin-top: -50px;
-            }
-        }
-
-        .popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 10000;
-        }
-
-        .popup-content {
-            background: white;
-            padding: 3rem;
-            border-radius: 20px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-        }
-
-        .popup-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #666;
-        }
-
-        .popup h3 {
-            color: #333;
-            margin-bottom: 1rem;
-            font-size: 1.8rem;
-        }
-
-        .popup p {
-            color: #666;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="urgency-bar">
-        🔥 Limited Time: First Class FREE + ASU Students Save 20% | Only 12 spots left this week!
+        🔥 Limited spots this week—join Tempe's dance community today!
     </div>
 
     <nav class="nav">
         <div class="nav-container">
             <div class="logo">Hybrid Dancers</div>
             <ul class="nav-links">
-                <li><a href="#classes">Classes</a></li>
-                <li><a href="#about">About Pearla</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="instructor.html">Instructor</a></li>
                 <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#community">Community</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li class="account-link"><a id="accountLink" href="login.html">Log In</a></li>
+                <li id="welcomeMsg" class="welcome-msg" style="display:none;"></li>
+                <li class="account-link" id="logoutNavItem" style="display:none;"><a id="logoutNav" href="#">Log Out</a></li>
             </ul>
         </div>
     </nav>
@@ -786,11 +34,11 @@
         <div class="hero-content">
             <div class="hero-badge">🏆 Tempe's #1 Dance Fusion Studio</div>
             <h1>Hybrid Dancers</h1>
-            <div class="offer">FIRST CLASS FREE!</div>
+            <div class="offer">START YOUR JOURNEY</div>
             <p class="tagline">Where Shuffling, Hip-Hop & Contemporary Create Magic<br>Join 200+ dancers in Tempe's most energetic community</p>
             <div class="cta-container">
-                <a href="#classes" class="cta-primary">Book Your FREE Trial 🎉</a>
-                <a href="#about" class="cta-secondary">Meet Pearla</a>
+                <a href="services.html" class="cta-primary">Book Your FREE Trial 🎉</a>
+                <a href="instructor.html" class="cta-secondary">Meet Pearla</a>
             </div>
         </div>
     </section>
@@ -871,68 +119,71 @@
         </div>
     </section>
 
-    <section id="about" class="pearla-section">
-        <div class="pearla-content">
-            <h2>Meet Pearla - Your Dance Guide</h2>
-            <div style="background: rgba(255,255,255,0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0;">
-                <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 1.5rem;">
-                    "I started Hybrid Dancers because I couldn't find a space that celebrated the beautiful chaos of mixing dance styles. Why choose one when you can master the fusion?"
-                </p>
-                <p style="font-size: 1.1rem; line-height: 1.8;">
-                    With 8+ years performing at festivals like EDC and Coachella, plus a Contemporary Dance degree from ASU, I bring both street credibility and technical expertise to every class. My mission? Help you discover your unique dance voice while building an unstoppable community.
-                </p>
-            </div>
-            <div style="margin-top: 2rem;">
-                <strong>Credentials:</strong> ASU Dance Graduate • Festival Performer • 500+ Students Taught • Featured in Phoenix New Times
-            </div>
+    <section id="instagram-reels" class="instagram-reels">
+        <h2>🔥 See the Moves – Latest from @hybriddancers</h2>
+        <div id="reels-container">
+            <div id="reels-grid" class="reels-grid"></div>
         </div>
+        <a href="https://instagram.com/hybriddancers" target="_blank" rel="noopener" class="follow-btn">Follow on Instagram</a>
     </section>
 
-    <section id="pricing" class="pricing-section">
-        <h2>Choose Your Dance Journey</h2>
-        <div class="discount-badge" style="display: block; text-align: center; margin-bottom: 3rem;">
-            🎓 ASU Students: Use code SUNDEVIL for 20% off!
-        </div>
-        
-        <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>Drop-In Explorer</h3>
-                <div class="price">$20</div>
-                <div class="price-period">per class</div>
-                <ul class="features-list">
-                    <li>First class FREE</li>
-                    <li>No commitment required</li>
-                    <li>Perfect for busy schedules</li>
-                    <li>Access to all class styles</li>
-                    <li>Community Discord access</li>
-                </ul>
-                <button class="book-btn" onclick="bookClass('drop-in')">Start FREE Trial</button>
-            </div>
-            
-            <div class="pricing-card featured">
-                <h3>Monthly Unlimited</h3>
-                <div class="price">$89</div>
-                <div class="price-period">per month</div>
-                <ul class="features-list">
-                    <li>Unlimited classes</li>
-                    <li>Priority booking</li>
-                    <li>Exclusive workshops</li>
-                    <li>Performance opportunities</li>
-                    <li>Progress tracking</li>
-                    <li>Bring-a-friend passes</li>
-                </ul>
-                <button class="book-btn" onclick="bookClass('membership')">Join The Family</button>
-            </div>
-            
-            <div class="pricing-card">
-                <h3>Online Academy</h3>
-                <div class="price">$15</div>
-                <div class="price-period">per month</div>
-                <ul class="features-list">
-                    <li>50+ tutorial videos</li>
-                    <li>New content weekly</li>
-                    <li>Beginner to advanced</li>
-                    <li>Mobile app access</li>
-                    <li>Community challenges</li>
-                </ul>
-                <button class="book-btn" onclick="bookClass('online')">Start 7-Day Free Trial</button>
+    <!-- Keep your footer or additional sections here -->
+
+    <script>
+        function bookClass(name) {
+            window.location.href = 'booking.html?class=' + encodeURIComponent(name);
+        }
+    </script>
+    <script>
+        async function loadReels() {
+            const token = ''; // Instagram Graph API token
+            const userId = ''; // Business account ID
+            const grid = document.getElementById('reels-grid');
+            const container = document.getElementById('reels-container') || grid;
+
+            if (token && userId) {
+                try {
+                    const resp = await fetch(`https://graph.instagram.com/${userId}/media?fields=media_url,media_type,permalink&access_token=${token}`);
+                    const data = await resp.json();
+                    const reels = (data.data || []).filter(p => p.media_type === 'VIDEO').slice(0, 3);
+                    reels.forEach(reel => {
+                        const vid = document.createElement('video');
+                        vid.src = reel.media_url;
+                        vid.autoplay = true;
+                        vid.muted = true;
+                        vid.loop = true;
+                        vid.playsInline = true;
+                        vid.className = 'reel-video';
+                        grid.appendChild(vid);
+                    });
+                    return;
+                } catch (e) {
+                    console.error('Instagram API error', e);
+                    if (container) {
+                        const msg = document.createElement('p');
+                        msg.textContent = 'Reels could not be loaded.';
+                        msg.className = 'reels-error';
+                        container.appendChild(msg);
+                    }
+                }
+            }
+
+            const embeds = [
+                '<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/XXXXXXXXX/"></blockquote>',
+                '<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/YYYYYYYYY/"></blockquote>',
+                '<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/ZZZZZZZZZ/"></blockquote>'
+            ];
+            embeds.forEach(html => grid.insertAdjacentHTML('beforeend', html));
+            const s = document.createElement('script');
+            s.src = 'https://www.instagram.com/embed.js';
+            s.async = true;
+            grid.appendChild(s);
+        }
+
+        document.addEventListener('DOMContentLoaded', loadReels);
+    </script>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="scripts.js"></script>
+    <script type="module" src="auth.js"></script>
+  </body>
+</html>

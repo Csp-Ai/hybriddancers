@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In - Hybrid Dancers</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <div class="logo">Hybrid Dancers</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="instructor.html">Instructor</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="index.html#community">Community</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li class="account-link"><a id="accountLink" href="login.html">Log In</a></li>
+        <li id="welcomeMsg" class="welcome-msg" style="display:none;"></li>
+        <li class="account-link" id="logoutNavItem" style="display:none;"><a id="logoutNav" href="#">Log Out</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="auth-section">
+    <form id="login-form" class="auth-form">
+      <h2>Log In</h2>
+      <label for="loginEmail">Email</label>
+      <input id="loginEmail" type="email" required>
+      <label for="loginPassword">Password</label>
+      <div class="password-wrapper">
+        <input id="loginPassword" type="password" required>
+        <button type="button" class="toggle-password" data-target="loginPassword"><i class="fas fa-eye"></i></button>
+      </div>
+      <button type="submit" class="auth-btn">Log In</button>
+      <p class="form-switch">Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </form>
+  </section>
+
+  <script type="module" src="auth.js"></script>
+</body>
+</html>

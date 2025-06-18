@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 git init
 git remote add origin https://github.com/Csp-Ai/hybriddancers-site.git
 git add .
