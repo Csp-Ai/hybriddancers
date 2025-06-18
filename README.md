@@ -23,3 +23,11 @@ To verify UI structure and functionality:
 ```bash
 pip install -r requirements.txt
 pytest
+```
+
+To run the booking server with Stripe Checkout:
+
+```bash
+npm install
+npm start
+```
