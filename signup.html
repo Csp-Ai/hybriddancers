@@ -19,6 +19,8 @@
         <li><a href="index.html#community">Community</a></li>
         <li><a href="events.html">Events</a></li>
         <li class="account-link"><a id="accountLink" href="login.html">Log In</a></li>
+        <li id="welcomeMsg" class="welcome-msg" style="display:none;"></li>
+        <li class="account-link" id="logoutNavItem" style="display:none;"><a id="logoutNav" href="#">Log Out</a></li>
       </ul>
     </div>
   </nav>
@@ -40,8 +42,6 @@
     </form>
   </section>
 
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.22.2/firebase-auth-compat.js"></script>
-  <script src="auth.js"></script>
+  <script type="module" src="auth.js"></script>
 </body>
 </html>
