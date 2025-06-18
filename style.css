@@ -786,3 +786,9 @@
             text-decoration: none;
             font-weight: bold;
         }
+
+        .reels-error {
+            margin-top: 1rem;
+            color: #F5F5DC;
+            font-style: italic;
+        }
