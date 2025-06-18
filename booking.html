@@ -67,13 +67,6 @@
             margin-top: 1rem;
         }
 
-        #confirmation {
-            display: none;
-            text-align: center;
-            margin-top: 1rem;
-            color: green;
-            font-weight: bold;
-        }
     </style>
 </head>
 <body>
@@ -89,30 +82,19 @@
                 <input type="email" name="email" required>
             </label>
             <label>
-                Class
-                <input type="text" name="class" id="class-field" required>
+                Class Type
+                <select name="classType" required>
+                    <option value="Shuffling">Shuffling</option>
+                    <option value="Hip-Hop">Hip-Hop</option>
+                    <option value="Contemporary">Contemporary</option>
+                </select>
             </label>
-            <button type="submit">Submit</button>
+            <button type="submit">Book Drop-In for $20</button>
         </form>
-        <p id="confirmation">Thanks! Your email app should open shortly.</p>
         <p class="back-link"><a href="index.html">Back to Home</a></p>
     </div>
-    <script>
-        const params = new URLSearchParams(window.location.search);
-        const cls = params.get('class');
-        if (cls) document.getElementById('class-field').value = cls;
-        const confirmation = document.getElementById('confirmation');
-        document.getElementById('booking-form').addEventListener('submit', e => {
-            e.preventDefault();
-            const form = e.target;
-            const name = encodeURIComponent(form.name.value);
-            const email = encodeURIComponent(form.email.value);
-            const c = encodeURIComponent(form.class.value);
-            const mailto = `mailto:info@hybriddancers.com?subject=Class%20Booking%20for%20${c}&body=Name:%20${name}%0AEmail:%20${email}%0AClass:%20${c}`;
-            confirmation.style.display = 'block';
-            window.location.href = mailto;
-        });
-    </script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="booking.js"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="scripts.js"></script>
   </body>
