@@ -1,21 +1,25 @@
-# Hybrid Dancers
+# 🌟 Hybrid Dancers Website
 
-This repository contains the public site for Hybrid Dancers.
+Welcome to the official repository for **Hybrid Dancers** — a vibrant dance fusion studio based in Tempe, AZ. This site powers our online presence, showcasing class offerings, instructor info, pricing, and community engagement features.
 
-## Git Setup
+---
 
-To set up the repository locally, run the provided setup script:
+## 🚀 Project Overview
+
+This repository contains:
+
+- The **public website** for Hybrid Dancers (`index.html`, `services.html`, etc.)
+- A **booking experience** that lets users reserve classes online
+- Tools for analyzing and testing site quality
+
+The site is designed for maximum impact on both desktop and mobile, prioritizing **clarity, accessibility, and conversion**.
+
+---
+
+## 🧪 Testing the Site
+
+To verify UI structure and functionality:
 
 ```bash
-./git-init.sh
-```
-
-The script initializes Git and pushes the initial commit to GitHub. Make sure it is executable before running.
-
-## Booking Flow
-
-Clicking any `Book` button on the site will now open `booking.html` where visitors can submit their name, email and desired class. Submitting the form launches a pre-filled email so bookings can be handled manually.
-
-## Site Analyzer
-
-Run `./site_analyzer.py` to inspect the HTML files for missing links and confirm that booking functionality is available.
+pip install -r requirements.txt
+pytest
