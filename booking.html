@@ -5,35 +5,103 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book a Class | Hybrid Dancers</title>
     <style>
-        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; padding: 2rem; }
-        form { max-width: 400px; margin: 0 auto; display: grid; gap: 1rem; }
-        label { font-weight: bold; }
-        input, button { padding: 0.5rem; font-size: 1rem; }
-        button { cursor: pointer; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #8B0000 0%, #d2b48c 50%, #FFD700 100%);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .booking-card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 0.75rem;
+            background: linear-gradient(45deg, #8B0000, #FFD700);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #8B0000, #d2b48c);
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        #confirmation {
+            display: none;
+            text-align: center;
+            margin-top: 1rem;
+            color: green;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
-    <h1>Book Your Class</h1>
-    <form id="booking-form">
-        <label>
-            Name
-            <input type="text" name="name" required>
-        </label>
-        <label>
-            Email
-            <input type="email" name="email" required>
-        </label>
-        <label>
-            Class
-            <input type="text" name="class" id="class-field" required>
-        </label>
-        <button type="submit">Submit</button>
-    </form>
-    <p><a href="index.html">Back to Home</a></p>
+    <div class="booking-card">
+        <h1>Book Your Class</h1>
+        <form id="booking-form">
+            <label>
+                Name
+                <input type="text" name="name" required>
+            </label>
+            <label>
+                Email
+                <input type="email" name="email" required>
+            </label>
+            <label>
+                Class
+                <input type="text" name="class" id="class-field" required>
+            </label>
+            <button type="submit">Submit</button>
+        </form>
+        <p id="confirmation">Thanks! Your email app should open shortly.</p>
+        <p class="back-link"><a href="index.html">Back to Home</a></p>
+    </div>
     <script>
         const params = new URLSearchParams(window.location.search);
         const cls = params.get('class');
         if (cls) document.getElementById('class-field').value = cls;
+        const confirmation = document.getElementById('confirmation');
         document.getElementById('booking-form').addEventListener('submit', e => {
             e.preventDefault();
             const form = e.target;
@@ -41,6 +109,7 @@
             const email = encodeURIComponent(form.email.value);
             const c = encodeURIComponent(form.class.value);
             const mailto = `mailto:info@hybriddancers.com?subject=Class%20Booking%20for%20${c}&body=Name:%20${name}%0AEmail:%20${email}%0AClass:%20${c}`;
+            confirmation.style.display = 'block';
             window.location.href = mailto;
         });
     </script>
