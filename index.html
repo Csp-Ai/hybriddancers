@@ -118,7 +118,9 @@
 
     <section id="instagram-reels" class="instagram-reels">
         <h2>🔥 See the Moves – Latest from @hybriddancers</h2>
-        <div id="reels-grid" class="reels-grid"></div>
+        <div id="reels-container">
+            <div id="reels-grid" class="reels-grid"></div>
+        </div>
         <a href="https://instagram.com/hybriddancers" target="_blank" rel="noopener" class="follow-btn">Follow on Instagram</a>
     </section>
 
@@ -134,6 +136,7 @@
             const token = ''; // Instagram Graph API token
             const userId = ''; // Business account ID
             const grid = document.getElementById('reels-grid');
+            const container = document.getElementById('reels-container') || grid;
 
             if (token && userId) {
                 try {
@@ -153,6 +156,12 @@
                     return;
                 } catch (e) {
                     console.error('Instagram API error', e);
+                    if (container) {
+                        const msg = document.createElement('p');
+                        msg.textContent = 'Reels could not be loaded.';
+                        msg.className = 'reels-error';
+                        container.appendChild(msg);
+                    }
                 }
             }
 
