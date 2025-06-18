@@ -19,3 +19,11 @@ Clicking any `Book` button on the site will now open `booking.html` where visito
 ## Site Analyzer
 
 Run `./site_analyzer.py` to inspect the HTML files for missing links and confirm that booking functionality is available.
+
+## Instagram Reels
+
+`index.html` loads the latest reels from the Hybrid Dancers account via the Instagram Graph API. Replace `YOUR_INSTAGRAM_ACCESS_TOKEN` in the script with a valid token to enable this feature.
+
+## User Profiles
+
+Visitors can create a local profile at `profile.html` to track progress and save their Instagram handle. Data is stored in browser `localStorage`.

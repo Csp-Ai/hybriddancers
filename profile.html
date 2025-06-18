@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Profile | Hybrid Dancers</title>
+    <style>
+        body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; padding: 2rem; }
+        form, #profile-view { max-width: 500px; margin: 0 auto; display: grid; gap: 1rem; }
+        label { font-weight: bold; }
+        input, textarea, button { padding: 0.5rem; font-size: 1rem; }
+        button { cursor: pointer; }
+
+        .social-links {
+            margin-top: 2rem;
+            text-align: center;
+        }
+        .social-links a {
+            color: #8B0000;
+            margin: 0 0.5rem;
+            text-decoration: none;
+        }
+        .social-links a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div id="signup-view">
+        <h1>Create Your Profile</h1>
+        <form id="profile-form">
+            <label>Name<input type="text" name="name" required></label>
+            <label>Email<input type="email" name="email" required></label>
+            <label>Instagram<input type="text" name="ig" placeholder="@username"></label>
+            <label>Password<input type="password" name="pw" required></label>
+            <button type="submit">Save Profile</button>
+        </form>
+    </div>
+    <div id="profile-view" style="display:none;">
+        <h1>Welcome, <span id="p-name"></span></h1>
+        <p>Email: <span id="p-email"></span></p>
+        <p>Instagram: <span id="p-ig"></span></p>
+        <label>Progress Notes
+            <textarea id="p-notes" rows="5"></textarea>
+        </label>
+        <button id="save-notes">Save Notes</button>
+        <button id="logout">Log Out</button>
+    </div>
+    <p><a href="index.html">Back to Home</a></p>
+
+<script>
+function loadProfile() {
+    const data = localStorage.getItem('userProfile');
+    if (!data) return false;
+    const p = JSON.parse(data);
+    document.getElementById('signup-view').style.display = 'none';
+    document.getElementById('profile-view').style.display = 'grid';
+    document.getElementById('p-name').textContent = p.name;
+    document.getElementById('p-email').textContent = p.email;
+    document.getElementById('p-ig').textContent = p.ig || '';
+    document.getElementById('p-notes').value = p.notes || '';
+    return true;
+}
+
+loadProfile();
+
+const form = document.getElementById('profile-form');
+form.addEventListener('submit', e => {
+    e.preventDefault();
+    const profile = {
+        name: form.name.value,
+        email: form.email.value,
+        ig: form.ig.value,
+        pw: form.pw.value,
+        notes: ''
+    };
+    localStorage.setItem('userProfile', JSON.stringify(profile));
+    loadProfile();
+});
+
+document.getElementById('save-notes').addEventListener('click', () => {
+    const p = JSON.parse(localStorage.getItem('userProfile'));
+    p.notes = document.getElementById('p-notes').value;
+    localStorage.setItem('userProfile', JSON.stringify(p));
+    alert('Notes saved');
+});
+
+document.getElementById('logout').addEventListener('click', () => {
+    localStorage.removeItem('userProfile');
+    location.reload();
+});
+</script>
+<footer>
+    <div class="social-links">
+        <a href="https://instagram.com/hybriddancers" target="_blank">Instagram</a> |
+        <a href="https://tiktok.com/@hybriddancers" target="_blank">TikTok</a> |
+        <a href="https://www.youtube.com/@hybriddancers" target="_blank">YouTube</a>
+    </div>
+</footer>
+</body>
+</html>
