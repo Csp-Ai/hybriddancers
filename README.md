@@ -32,6 +32,16 @@ npm install
 npm start
 ```
 
+### Booking API
+
+The Express server now stores bookings in `data/bookings.json` and exposes a small API:
+
+- `GET /api/bookings` – list all bookings or filter by `?email=`
+- `POST /api/bookings` – create a new booking
+- `DELETE /api/bookings/:id` – cancel a booking
+
+Agent scripts under `agents/` can analyze this data. Run `node agents/attendance-agent.js` to log attendance anomalies.
+
 ## 🌐 Custom Domain with Firebase Hosting
 
 To serve the site on `www.hybriddancers.com`, configure your DNS records as follows:
