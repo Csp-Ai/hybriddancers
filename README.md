@@ -43,6 +43,18 @@ To serve the site on `www.hybriddancers.com`, configure your DNS records as foll
 
 Remove any existing records that point to GitHub Pages or other providers (for example the `185.199.x.x` records or a `CNAME` to `csp-ai.github.io`). After updating, allow DNS to propagate and let Firebase provision the SSL certificate. Once verification is complete, `https://www.hybriddancers.com` will load securely.
 
+## 🛠️ Admin Dashboard
+
+`admin-dashboard.html` provides a private dashboard for studio administrators. After logging in with an approved admin account you can:
+
+- Review a table of the latest bookings
+- Track key metrics like monthly totals, revenue and most popular class
+- View attendance trends in an interactive chart
+- Read automatically generated **AI Insights** suggesting scheduling and retention improvements
+
+Open the file in your browser (or deploy it alongside the site) and sign in to access these tools.
+
+
 
 
 ## 📚 Documentation
