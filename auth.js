@@ -8,10 +8,13 @@ import {
 } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
 
 // Firebase configuration - values provided in Firebase console
+// Configuration values should come from environment variables to avoid
+// hard-coding credentials in source control. When bundling this script,
+// provide the values via your build tool or server.
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  projectId: "YOUR_PROJECT_ID"
+  apiKey: process.env.FIREBASE_API_KEY || '',
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN || '',
+  projectId: process.env.FIREBASE_PROJECT_ID || ''
 };
 
 // Initialize Firebase
