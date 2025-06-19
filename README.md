@@ -66,6 +66,13 @@ Open the file in your browser (or deploy it alongside the site) and sign in to a
 
 All data is tied to your logged in Firebase account. Mock data is used for class lists and events, but it can be replaced with real backend calls.
 
+## 🚀 AI Ops Dashboard
+
+This dashboard is secured through Firebase Authentication and only renders for approved admin emails.
+
+`ai-ops-dashboard.html` provides an admin-only overview of the entire project health and business metrics. After Firebase auth verifies an admin email, it summarizes code stats, test coverage and deployment status, displays KPIs (bookings, revenue, signups, issues) with charts, and surfaces AI-driven insights with suggested Copilot prompts. A secure append-only log book records every admin action. Use it as the central operations hub.
+
+
 
 
 
