@@ -64,3 +64,53 @@ exports.registerForClass = functions.https.onCall(async (data, context) => {
 
   return { success: true, id: docRef.id };
 });
+
+exports.dailyClassSummary = functions.pubsub
+  .schedule('0 9 * * *')
+  .timeZone('America/Los_Angeles')
+  .onRun(async () => {
+    const transporter = createTransport();
+    const now = Date.now();
+    const since = admin.firestore.Timestamp.fromMillis(now - 24 * 60 * 60 * 1000);
+    const snapshot = await db
+      .collection('class_signups')
+      .where('created', '>=', since)
+      .get();
+
+    if (snapshot.empty) {
+      return null;
+    }
+
+    const classes = {};
+    snapshot.forEach(doc => {
+      const data = doc.data();
+      const className = data.className || data.class;
+      const student = data.studentName || data.name;
+      if (!classes[className]) {
+        classes[className] = { students: [], count: 0 };
+      }
+      classes[className].students.push(student);
+      classes[className].count += 1;
+    });
+
+    let html = '<h2>New Class Signups</h2>';
+    for (const [className, info] of Object.entries(classes)) {
+      html += `<h3>${className} (${info.count})</h3><ul>`;
+      for (const student of info.students) {
+        html += `<li>${student}</li>`;
+      }
+      html += '</ul>';
+    }
+
+    const mailOptions = {
+      from: process.env.EMAIL_FROM ||
+        process.env.GMAIL_USER ||
+        'no-reply@hybriddancers.com',
+      to: process.env.ADMIN_EMAIL,
+      subject: 'Daily Class Signup Summary',
+      html
+    };
+
+    await transporter.sendMail(mailOptions);
+    return null;
+  });

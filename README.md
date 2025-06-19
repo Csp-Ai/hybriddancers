@@ -54,6 +54,7 @@ Agent scripts under `agents/` can analyze this data. Run `node agents/attendance
 - SENDGRID_API_KEY – your SendGrid API key
 
 Optionally set EMAIL_FROM to override the sender address.
+Set ADMIN_EMAIL to receive the daily signup summary from `functions/dailyClassSummary`.
 
 
 ## ⚙️ Runtime Configuration
