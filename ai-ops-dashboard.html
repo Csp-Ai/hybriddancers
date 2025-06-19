@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Ops Dashboard - Hybrid Dancers</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .dashboard { padding: 6rem 1rem; }
+    .section { margin-bottom: 2rem; }
+    .stat-grid { display:flex; gap:1rem; flex-wrap:wrap; }
+    .stat-card { background:#fff; padding:1rem; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); flex:1; min-width:150px; text-align:center; }
+    table { width:100%; border-collapse:collapse; }
+    th,td{ border:1px solid #ddd; padding:0.5rem; text-align:left; }
+    #log-table td, #log-table th { font-size:0.9rem; }
+    .copilot { background:#f8f8f8; padding:1rem; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <div class="logo">Hybrid Dancers</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="instructor.html">Instructor</a></li>
+        <li class="account-link"><a id="accountLink" href="login.html">Log In</a></li>
+        <li class="account-link" id="logoutNavItem" style="display:none;"><a id="logoutNav" href="#">Log Out</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="dashboard" id="dashboard">
+    <h2>AI Operations Dashboard</h2>
+
+    <div class="section" id="code-section">
+      <h3>Code / Engineering</h3>
+      <div id="code-stats" class="stat-grid"></div>
+      <canvas id="codeChart" height="80"></canvas>
+      <div class="copilot" id="copilot-code"></div>
+    </div>
+
+    <div class="section" id="kpi-section">
+      <h3>Business KPIs</h3>
+      <div id="kpi-stats" class="stat-grid"></div>
+      <canvas id="kpiChart" height="80"></canvas>
+      <div class="copilot" id="copilot-kpi"></div>
+    </div>
+
+    <div class="section" id="log-section">
+      <h3>Military Log Book</h3>
+      <table id="log-table">
+        <thead><tr><th>Time</th><th>Admin</th><th>Action</th><th>Details</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <script type="module" src="auth.js"></script>
+  <script type="module" src="ai-ops-dashboard.js"></script>
+</body>
+</html>
