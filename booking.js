@@ -1,4 +1,6 @@
-const stripe = Stripe('YOUR_PUBLIC_STRIPE_KEY'); // Replace with your actual public key
+// The Stripe public key should be injected by the server or build tool.
+// Fallback to an empty string to avoid accidental key leakage.
+const stripe = Stripe(window.STRIPE_PUBLIC_KEY || process.env.STRIPE_PUBLIC_KEY || '');
 
 document.getElementById('booking-form').addEventListener('submit', async (e) => {
   e.preventDefault();

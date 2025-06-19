@@ -2,15 +2,16 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
-// Your web app's Firebase configuration
+// Firebase configuration should be provided via environment variables.
+// This prevents leaking credentials in the repository.
 const firebaseConfig = {
-  apiKey: "7aA5rC8pB0OmIo6ps81bT2WqWNuBalnmur",
-  authDomain: "hybriddancers.firebaseapp.com",
-  projectId: "hybriddancers",
-  storageBucket: "hybriddancers.appspot.com",
-  messagingSenderId: "715829602062",
-  appId: "1:715829602062:web:3b390d4f4cc1918b7701e1",
-  measurementId: "G-RPBEMBX93F"
+  apiKey: process.env.FIREBASE_API_KEY || '',
+  authDomain: process.env.FIREBASE_AUTH_DOMAIN || '',
+  projectId: process.env.FIREBASE_PROJECT_ID || '',
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET || '',
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || '',
+  appId: process.env.FIREBASE_APP_ID || '',
+  measurementId: process.env.FIREBASE_MEASUREMENT_ID || ''
 };
 
 // Initialize Firebase
