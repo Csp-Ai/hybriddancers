@@ -42,6 +42,20 @@ The Express server now stores bookings in `data/bookings.json` and exposes a sma
 
 Agent scripts under `agents/` can analyze this data. Run `node agents/attendance-agent.js` to log attendance anomalies.
 
+### Email Confirmation Setup
+
+`functions/registerForClass` sends confirmation emails via Nodemailer after saving a registration. Provide credentials for one of the services below:
+
+#### Gmail
+- GMAIL_USER – your Gmail address
+- GMAIL_PASS – app password for the account
+
+#### SendGrid
+- SENDGRID_API_KEY – your SendGrid API key
+
+Optionally set EMAIL_FROM to override the sender address.
+
+
 ## ⚙️ Runtime Configuration
 
 Client-side scripts expect a global `window.CONFIG` object containing your Stripe and Firebase keys. You can serve these values dynamically from Express by adding a route:
