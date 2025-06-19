@@ -10,6 +10,8 @@ const kpiChartEl = document.getElementById('kpiChart');
 const logTableBody = document.querySelector('#log-table tbody');
 const copilotCodeEl = document.getElementById('copilot-code');
 const copilotKpiEl = document.getElementById('copilot-kpi');
+const notifyOutputEl = document.getElementById('notification-output');
+const testNotifyBtn = document.getElementById('testNotifyBtn');
 
 function mockAnalyzeRepo() {
   // Ideally this would read files using a backend service or Cloud Function.
@@ -120,6 +122,14 @@ export function logAction(action, details) {
   loadLog();
 }
 
+function sendNotification(message) {
+  // TODO: integrate email/SMS service
+  const div = document.createElement('div');
+  div.textContent = message;
+  notifyOutputEl.appendChild(div);
+  logAction('event-notification-bot', message);
+}
+
 function showCopilotTemplates() {
   const logs = JSON.parse(localStorage.getItem('hd_admin_log') || '[]');
   const templates = logs.slice(-3).map(l => `Generate tests for ${l.details}`);
@@ -130,6 +140,12 @@ function showCopilotTemplates() {
     container.appendChild(p);
   });
   copilotCodeEl.appendChild(container);
+}
+
+if (testNotifyBtn) {
+  testNotifyBtn.addEventListener('click', () => {
+    sendNotification('Test notification sent');
+  });
 }
 
 async function init() {

@@ -72,6 +72,8 @@ This dashboard is secured through Firebase Authentication and only renders for a
 
 `ai-ops-dashboard.html` provides an admin-only overview of the entire project health and business metrics. After Firebase auth verifies an admin email, it summarizes code stats, test coverage and deployment status, displays KPIs (bookings, revenue, signups, issues) with charts, and surfaces AI-driven insights with suggested Copilot prompts. A secure append-only log book records every admin action. Use it as the central operations hub.
 
+The dashboard also includes an **event-notification bot** that lets admins send or receive alerts for important issues. Notifications are logged in the military log book and will eventually integrate with email or SMS services.
+
 ### Local access
 
 1. Start the Node server:
