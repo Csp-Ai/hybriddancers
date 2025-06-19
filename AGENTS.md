@@ -10,6 +10,7 @@ This repo defines a set of lightweight AI/automation agents. Each agent logs its
 | insights-agent | agents/insights-agent.js | Summarizes recent bookings and logs top day and class trends. |
 | anomaly-agent | agents/anomaly-agent.js | Detects spikes in bookings by day, class, or instructor using z-score heuristics. |
 | trends-agent | agents/trends-agent.js | Reports booking trends over the last 30/60/90 days by class, weekday, and instructor. |
+| forecast-agent | agents/forecast-agent.js | Generates 30-day booking forecasts per class with confidence notes. |
 
 ## Operating Standards
 
