@@ -86,5 +86,12 @@ app.delete('/api/bookings/:id', (req, res) => {
   res.json({ id: req.params.id });
 });
 
+// --- Logs API ---
+// Return the raw log entries used by automation agents and admin tools
+app.get('/api/logs', (req, res) => {
+  const logs = readJson(logsFile);
+  res.json(logs);
+});
+
 const PORT = process.env.PORT || 4242;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

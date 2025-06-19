@@ -61,6 +61,7 @@ Remove any existing records that point to GitHub Pages or other providers (for e
 - Track key metrics like monthly totals, revenue and most popular class
 - View attendance trends in an interactive chart
 - Read automatically generated **AI Insights** suggesting scheduling and retention improvements
+- Inspect recent system logs for troubleshooting
 
 Open the file in your browser (or deploy it alongside the site) and sign in to access these tools.
 

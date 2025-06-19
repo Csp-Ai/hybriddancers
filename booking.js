@@ -11,19 +11,26 @@ document.getElementById('booking-form').addEventListener('submit', async (e) => 
     classType: form.classType.value,
   };
 
-  const response = await fetch('/create-checkout-session', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  });
+  try {
+    const response = await fetch('/create-checkout-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) throw new Error('Failed to start checkout');
+    const session = await response.json();
+    if (!session.id) throw new Error('Invalid session');
 
-  const session = await response.json();
-  if (session.id) {
     await fetch('/api/bookings', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...data, sessionId: session.id })
     });
+
+    showToast('Redirecting to payment...', 'success');
     await stripe.redirectToCheckout({ sessionId: session.id });
+  } catch (err) {
+    console.error(err);
+    showToast('Booking failed. Please try again.', 'error');
   }
 });
