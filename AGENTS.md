@@ -7,6 +7,7 @@ This repo defines a set of lightweight AI/automation agents. Each agent logs its
 | Name | File | Description |
 |------|------|-------------|
 | attendance-agent | agents/attendance-agent.js | Scans stored bookings and logs dates with unusually low attendance. |
+| insights-agent | agents/insights-agent.js | Summarizes recent bookings and logs top day and class trends. |
 
 ## Operating Standards
 
