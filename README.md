@@ -72,6 +72,19 @@ This dashboard is secured through Firebase Authentication and only renders for a
 
 `ai-ops-dashboard.html` provides an admin-only overview of the entire project health and business metrics. After Firebase auth verifies an admin email, it summarizes code stats, test coverage and deployment status, displays KPIs (bookings, revenue, signups, issues) with charts, and surfaces AI-driven insights with suggested Copilot prompts. A secure append-only log book records every admin action. Use it as the central operations hub.
 
+### Local access
+
+1. Start the Node server:
+
+   ```bash
+   npm install
+   npm start
+   ```
+
+   or open the project in **Visual Studio Code**, install the **Live Server** extension, and choose *Open with Live Server* on `ai-ops-dashboard.html`.
+
+2. Navigate to `http://localhost:4242/ai-ops-dashboard.html` and sign in with an approved admin account to view the dashboard.
+
 
 
 
