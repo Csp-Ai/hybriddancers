@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Insights - Hybrid Dancers</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .insights-page { padding: 2rem; max-width: 800px; margin: 0 auto; }
+    .insight-section { margin-bottom: 2rem; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <div class="logo">Hybrid Dancers</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="instructor.html">Instructor</a></li>
+        <li class="account-link"><a href="login.html">Log In</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="insights-page">
+    <h2>Latest AI Insights</h2>
+    <p id="lastUpdated"></p>
+
+    <div id="anomaly" class="insight-section">
+      <h3>Recent Anomalies</h3>
+      <ul id="anomalyList"></ul>
+    </div>
+
+    <div id="forecast" class="insight-section">
+      <h3>Forecasted Demand</h3>
+      <ul id="forecastList"></ul>
+    </div>
+
+    <div id="attendance" class="insight-section">
+      <h3>Attendance Patterns</h3>
+      <ul id="attendanceList"></ul>
+    </div>
+  </main>
+
+  <script type="module" src="scripts/dashboard-insights.js"></script>
+</body>
+</html>
