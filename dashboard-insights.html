@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Insights - Hybrid Dancers</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
-    .insights-page { padding: 2rem; max-width: 800px; margin: 0 auto; }
+    .insights-page { padding: 2rem; max-width: 900px; margin: 0 auto; }
     .insight-section { margin-bottom: 2rem; }
+    .filters { display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1rem; }
+    .filters label { display:flex; flex-direction:column; font-size:0.9rem; }
   </style>
 </head>
 <body>
@@ -25,21 +28,49 @@
 
   <main class="insights-page">
     <h2>Latest AI Insights</h2>
+    <div class="filters">
+      <label>Class
+        <select id="filterClass">
+          <option value="">All</option>
+        </select>
+      </label>
+      <label>Instructor
+        <select id="filterInstructor">
+          <option value="">All</option>
+        </select>
+      </label>
+      <label>Start
+        <input type="date" id="filterStart">
+      </label>
+      <label>End
+        <input type="date" id="filterEnd">
+      </label>
+      <label>Locale
+        <select id="localeSelect">
+          <option value="en-US">US</option>
+          <option value="de-DE">EU</option>
+        </select>
+      </label>
+      <button id="exportCsv">Export CSV</button>
+    </div>
     <p id="lastUpdated"></p>
 
     <div id="anomaly" class="insight-section">
       <h3>Recent Anomalies</h3>
       <ul id="anomalyList"></ul>
+      <canvas id="anomalyChart" height="100"></canvas>
     </div>
 
     <div id="forecast" class="insight-section">
       <h3>Forecasted Demand</h3>
       <ul id="forecastList"></ul>
+      <canvas id="forecastChart" height="100"></canvas>
     </div>
 
     <div id="attendance" class="insight-section">
       <h3>Attendance Patterns</h3>
       <ul id="attendanceList"></ul>
+      <canvas id="attendanceChart" height="100"></canvas>
     </div>
   </main>
 

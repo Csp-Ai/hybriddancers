@@ -65,6 +65,16 @@ Remove any existing records that point to GitHub Pages or other providers (for e
 
 Open the file in your browser (or deploy it alongside the site) and sign in to access these tools.
 
+## 📊 Insights Dashboard
+
+`dashboard-insights.html` gives administrators a quick view of recent AI agent outputs. The page now includes:
+
+- Charts for anomalies, booking forecasts and attendance patterns powered by Chart.js
+- Filters to narrow insights by class, instructor or date range
+- Locale-aware timestamps (US/EU) and a CSV export button for further analysis
+
+Load the page after running the agents to explore trends and download the raw data.
+
 ## 🎓 Student Dashboard
 
 `student-dashboard.html` lets each student manage their classes and wellbeing. After logging in you can:
