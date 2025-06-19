@@ -11,6 +11,7 @@ const filterStart = document.getElementById('filterStart');
 const filterEnd = document.getElementById('filterEnd');
 const filterClass = document.getElementById('filterClass');
 const exportBtn = document.getElementById('exportCsv');
+const logsTableBody = document.querySelector('#logs-table tbody');
 
 let allBookings = [];
 
@@ -87,6 +88,18 @@ function generateInsights(bookings) {
   });
 }
 
+async function loadLogs() {
+  if (!logsTableBody) return;
+  const resp = await fetch('/api/logs');
+  const logs = resp.ok ? await resp.json() : [];
+  logsTableBody.innerHTML = '';
+  logs.slice(-20).reverse().forEach(l => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${new Date(l.time).toLocaleString()}</td><td>${l.action}</td><td>${l.details}</td>`;
+    logsTableBody.appendChild(tr);
+  });
+}
+
 function getFilteredBookings() {
   let filtered = allBookings;
   if (filterClass && filterClass.value && filterClass.value !== 'All') {
@@ -123,6 +136,7 @@ async function loadData() {
   renderStats(filtered);
   renderChart(filtered);
   generateInsights(filtered);
+  loadLogs();
 }
 
 onAuthStateChanged(auth, user => {
