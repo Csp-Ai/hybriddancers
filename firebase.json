@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "https://www.hybriddancers.com",
+        "type": 301
+      }
+    ]
+  }
+}
