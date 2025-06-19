@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard - Hybrid Dancers</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; margin:0; }
+    .dash-section { padding:2rem; max-width:800px; margin:0 auto; }
+    .dash-section h2 { margin-bottom:1rem; }
+    .dash-section ul { list-style:none; padding:0; }
+    .dash-section li { margin-bottom:0.5rem; }
+    button { margin-left:0.5rem; }
+    #wellnessJournal textarea { width:100%; height:80px; margin-top:0.5rem; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <div class="logo">Hybrid Dancers</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="instructor.html">Instructor</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="index.html#community">Community</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li class="account-link"><a id="accountLink" href="login.html">Log In</a></li>
+        <li id="welcomeMsg" class="welcome-msg" style="display:none;"></li>
+        <li class="account-link" id="logoutNavItem" style="display:none;"><a id="logoutNav" href="#">Log Out</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="dash-section" id="profile">
+    <h2>Profile</h2>
+    <p>Email: <span id="userEmail"></span></p>
+    <p>Membership Status: <span id="membershipStatus"></span></p>
+  </section>
+
+  <section class="dash-section" id="classBooking">
+    <h2>Available Classes</h2>
+    <label for="classFilter">Filter:</label>
+    <select id="classFilter">
+      <option>All</option>
+      <option>Hip Hop</option>
+      <option>Shuffle</option>
+      <option>Contemporary</option>
+    </select>
+    <ul id="classList"></ul>
+  </section>
+
+  <section class="dash-section" id="mySchedule">
+    <h2>My Schedule</h2>
+    <ul id="scheduleList"></ul>
+  </section>
+
+  <section class="dash-section" id="upcomingEvents">
+    <h2>Upcoming Events</h2>
+    <ul id="eventsList"></ul>
+  </section>
+
+  <section class="dash-section" id="wellnessJournal">
+    <h2>Wellness Journal</h2>
+    <label for="moodSelect">Mood (1-5):</label>
+    <select id="moodSelect">
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
+    <textarea id="journalText" placeholder="Today I'm feeling..."></textarea>
+    <button id="saveJournal">Save Entry</button>
+    <canvas id="moodChart" height="100"></canvas>
+  </section>
+
+  <section class="dash-section" id="aiInsights">
+    <h2>AI Insights</h2>
+    <div id="insights"></div>
+  </section>
+
+  <script type="module" src="auth.js"></script>
+  <script type="module" src="student-dashboard.js"></script>
+</body>
+</html>

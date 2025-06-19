@@ -54,6 +54,18 @@ Remove any existing records that point to GitHub Pages or other providers (for e
 
 Open the file in your browser (or deploy it alongside the site) and sign in to access these tools.
 
+## 🎓 Student Dashboard
+
+`student-dashboard.html` lets each student manage their classes and wellbeing. After logging in you can:
+
+- Browse upcoming classes and book a spot
+- See your personal schedule and cancel bookings
+- View studio events and RSVP
+- Track your mood in the Wellness Journal and view trends
+- Read simple **AI Insights** about your attendance and mood
+
+All data is tied to your logged in Firebase account. Mock data is used for class lists and events, but it can be replaced with real backend calls.
+
 
 
 
