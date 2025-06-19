@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard - Hybrid Dancers</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    .admin-page { padding: 6rem 1rem; }
+    .admin-nav { display:flex; gap:1rem; margin-bottom:1rem; flex-wrap:wrap; }
+    .admin-nav a { text-decoration:none; background:#eee; padding:0.5rem 1rem; border-radius:4px; color:#333; }
+    .stats { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:2rem; }
+    .stat-card { background:#fff; padding:1rem; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); flex:1; min-width:150px; text-align:center; }
+    table { width:100%; border-collapse:collapse; margin-bottom:2rem; }
+    th, td { border:1px solid #ddd; padding:0.5rem; text-align:left; }
+    #ai-insights { margin-top:2rem; }
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="nav-container">
+      <div class="logo">Hybrid Dancers</div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="instructor.html">Instructor</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="index.html#community">Community</a></li>
+        <li><a href="events.html">Events</a></li>
+        <li class="account-link"><a id="accountLink" href="login.html">Log In</a></li>
+        <li id="welcomeMsg" class="welcome-msg" style="display:none;"></li>
+        <li class="account-link" id="logoutNavItem" style="display:none;"><a id="logoutNav" href="#">Log Out</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="admin-page">
+    <nav class="admin-nav">
+      <a href="#bookings">Bookings</a>
+      <a href="#classes">Classes</a>
+      <a href="#users">Users</a>
+      <a href="#analytics">Analytics</a>
+    </nav>
+
+    <div class="stats" id="stats">
+      <!-- stats cards injected by JS -->
+    </div>
+
+    <h3>Recent Bookings</h3>
+    <table id="bookings-table">
+      <thead>
+        <tr><th>Name</th><th>Class</th><th>Date</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <h3>Attendance Trend</h3>
+    <canvas id="trendChart" height="100"></canvas>
+
+    <section id="ai-insights">
+      <h3>AI Insights</h3>
+      <ul id="insights-list"></ul>
+    </section>
+  </section>
+
+  <script type="module" src="auth.js"></script>
+  <script type="module" src="admin-dashboard.js"></script>
+</body>
+</html>
