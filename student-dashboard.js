@@ -20,15 +20,18 @@ function getStorageKey(key) {
   return user ? `${key}-${user.uid}` : key;
 }
 
-function loadStoredData() {
-  const sched = localStorage.getItem(getStorageKey('schedule'));
+async function loadStoredData() {
   const journal = localStorage.getItem(getStorageKey('journal'));
-  schedule = sched ? JSON.parse(sched) : [];
   journalEntries = journal ? JSON.parse(journal) : [];
+  const resp = await fetch(`/api/bookings?email=${encodeURIComponent(auth.currentUser.email)}`);
+  if (resp.ok) {
+    schedule = await resp.json();
+  } else {
+    schedule = [];
+  }
 }
 
-function storeData() {
-  localStorage.setItem(getStorageKey('schedule'), JSON.stringify(schedule));
+function storeJournal() {
   localStorage.setItem(getStorageKey('journal'), JSON.stringify(journalEntries));
 }
 
@@ -96,7 +99,7 @@ function addJournalEntry() {
   const text = document.getElementById('journalText').value.trim();
   const date = new Date().toISOString().slice(0,10);
   journalEntries.push({ date, mood, text });
-  storeData();
+  storeJournal();
   updateChart();
   renderJournal();
 }
@@ -115,26 +118,42 @@ function generateInsights() {
 }
 
 function setupEventListeners() {
-  document.getElementById('classList').addEventListener('click', e => {
+  document.getElementById('classList').addEventListener('click', async e => {
     if (e.target.classList.contains('book-btn')) {
       const id = parseInt(e.target.dataset.id, 10);
       const cls = availableClasses.find(c => c.id === id);
       if (cls && !schedule.find(s => s.id === id)) {
-        schedule.push(cls);
-        storeData();
-        renderSchedule();
-        generateInsights();
+        const resp = await fetch('/api/bookings', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: auth.currentUser.email,
+            name: auth.currentUser.email,
+            classType: cls.name,
+            date: cls.date,
+            time: cls.time,
+            location: cls.location
+          })
+        });
+        if (resp.ok) {
+          schedule.push(await resp.json());
+          renderSchedule();
+          generateInsights();
+        }
       }
     }
   });
 
-  document.getElementById('scheduleList').addEventListener('click', e => {
+  document.getElementById('scheduleList').addEventListener('click', async e => {
     if (e.target.classList.contains('cancel-btn')) {
       const id = parseInt(e.target.dataset.id, 10);
-      schedule = schedule.filter(c => c.id !== id);
-      storeData();
-      renderSchedule();
-      generateInsights();
+      const booking = schedule.find(c => c.id === id);
+      if (booking) {
+        await fetch(`/api/bookings/${booking.id}`, { method: 'DELETE' });
+        schedule = schedule.filter(c => c.id !== booking.id);
+        renderSchedule();
+        generateInsights();
+      }
     }
   });
 
@@ -150,10 +169,10 @@ function setupEventListeners() {
   });
 }
 
-function initDashboard() {
+async function initDashboard() {
   document.getElementById('userEmail').textContent = auth.currentUser.email;
   document.getElementById('membershipStatus').textContent = 'Active Member';
-  loadStoredData();
+  await loadStoredData();
   renderClasses(availableClasses);
   renderSchedule();
   renderEvents();

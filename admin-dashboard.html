@@ -16,6 +16,8 @@
     table { width:100%; border-collapse:collapse; margin-bottom:2rem; }
     th, td { border:1px solid #ddd; padding:0.5rem; text-align:left; }
     #ai-insights { margin-top:2rem; }
+    .filters { display:flex; gap:0.5rem; margin:1rem 0; flex-wrap:wrap; }
+    .filters input,.filters select { padding:0.25rem; }
   </style>
 </head>
 <body>
@@ -49,6 +51,17 @@
     </div>
 
     <h3>Recent Bookings</h3>
+    <div class="filters">
+      <input type="date" id="filterStart" aria-label="Start date">
+      <input type="date" id="filterEnd" aria-label="End date">
+      <select id="filterClass" aria-label="Class type">
+        <option>All</option>
+        <option>Hip Hop</option>
+        <option>Shuffle</option>
+        <option>Contemporary</option>
+      </select>
+      <button id="exportCsv">Export CSV</button>
+    </div>
     <table id="bookings-table">
       <thead>
         <tr><th>Name</th><th>Class</th><th>Date</th></tr>

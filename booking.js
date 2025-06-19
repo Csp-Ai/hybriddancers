@@ -19,6 +19,11 @@ document.getElementById('booking-form').addEventListener('submit', async (e) => 
 
   const session = await response.json();
   if (session.id) {
+    await fetch('/api/bookings', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...data, sessionId: session.id })
+    });
     await stripe.redirectToCheckout({ sessionId: session.id });
   }
 });

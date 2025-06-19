@@ -7,20 +7,12 @@ const bookingsTableBody = document.querySelector('#bookings-table tbody');
 const statsContainer = document.getElementById('stats');
 const insightsList = document.getElementById('insights-list');
 const chartEl = document.getElementById('trendChart');
+const filterStart = document.getElementById('filterStart');
+const filterEnd = document.getElementById('filterEnd');
+const filterClass = document.getElementById('filterClass');
+const exportBtn = document.getElementById('exportCsv');
 
-// Mock booking data - replace with backend fetch if available
-const mockBookings = [
-  { name: 'Alice', classType: 'Hip Hop', date: '2023-09-01' },
-  { name: 'Bob', classType: 'Contemporary', date: '2023-09-02' },
-  { name: 'Cara', classType: 'Hip Hop', date: '2023-09-02' },
-  { name: 'Dave', classType: 'Shuffle', date: '2023-09-03' },
-  { name: 'Eve', classType: 'Contemporary', date: '2023-09-04' },
-  { name: 'Frank', classType: 'Hip Hop', date: '2023-09-04' },
-  { name: 'Grace', classType: 'Shuffle', date: '2023-09-05' },
-  { name: 'Henry', classType: 'Hip Hop', date: '2023-09-06' },
-  { name: 'Ivy', classType: 'Contemporary', date: '2023-09-06' },
-  { name: 'Jack', classType: 'Hip Hop', date: '2023-09-07' }
-];
+let allBookings = [];
 
 function populateBookings(bookings) {
   bookingsTableBody.innerHTML = '';
@@ -95,13 +87,42 @@ function generateInsights(bookings) {
   });
 }
 
+function getFilteredBookings() {
+  let filtered = allBookings;
+  if (filterClass && filterClass.value && filterClass.value !== 'All') {
+    filtered = filtered.filter(b => b.classType === filterClass.value);
+  }
+  if (filterStart && filterStart.value) {
+    filtered = filtered.filter(b => b.date >= filterStart.value);
+  }
+  if (filterEnd && filterEnd.value) {
+    filtered = filtered.filter(b => b.date <= filterEnd.value);
+  }
+  return filtered;
+}
+
+function exportCsv() {
+  const rows = getFilteredBookings();
+  const header = 'name,classType,date\n';
+  const csv = header + rows.map(r => `${r.name},${r.classType},${r.date}`).join('\n');
+  const blob = new Blob([csv], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'bookings.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 async function loadData() {
-  // Replace this with fetch('/api/bookings') if backend is available
-  const bookings = mockBookings;
-  populateBookings(bookings);
-  renderStats(bookings);
-  renderChart(bookings);
-  generateInsights(bookings);
+  const resp = await fetch('/api/bookings');
+  const bookings = resp.ok ? await resp.json() : [];
+  allBookings = bookings;
+  const filtered = getFilteredBookings();
+  populateBookings(filtered);
+  renderStats(filtered);
+  renderChart(filtered);
+  generateInsights(filtered);
 }
 
 onAuthStateChanged(auth, user => {
@@ -110,6 +131,8 @@ onAuthStateChanged(auth, user => {
     return;
   }
   loadData();
+  [filterStart, filterEnd, filterClass].forEach(el => el && el.addEventListener('change', loadData));
+  if (exportBtn) exportBtn.addEventListener('click', exportCsv);
 });
 
 // To plug in deeper AI analysis, send booking data to a Python script or AI API
