@@ -7,6 +7,14 @@ const { nanoid } = require('nanoid');
 
 const app = express();
 app.use(express.json());
+if (process.env.NODE_ENV !== 'development') {
+  app.use((req, res, next) => {
+    if (!req.secure && req.get('x-forwarded-proto') !== 'https') {
+      return res.redirect('https://' + req.headers.host + req.url);
+    }
+    next();
+  });
+}
 app.use(express.static(path.join(__dirname)));
 
 const bookingsFile = path.join(__dirname, 'data', 'bookings.json');
