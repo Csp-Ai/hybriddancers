@@ -42,6 +42,31 @@ The Express server now stores bookings in `data/bookings.json` and exposes a sma
 
 Agent scripts under `agents/` can analyze this data. Run `node agents/attendance-agent.js` to log attendance anomalies.
 
+## ⚙️ Runtime Configuration
+
+Client-side scripts expect a global `window.CONFIG` object containing your Stripe and Firebase keys. You can serve these values dynamically from Express by adding a route:
+
+```javascript
+app.get('/config.js', (req, res) => {
+  res.type('js').send(`window.CONFIG = ${JSON.stringify({
+    STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY,
+    FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
+    FIREBASE_AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
+    FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
+    FIREBASE_STORAGE_BUCKET: process.env.FIREBASE_STORAGE_BUCKET,
+    FIREBASE_MESSAGING_SENDER_ID: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
+    FIREBASE_MEASUREMENT_ID: process.env.FIREBASE_MEASUREMENT_ID
+  })};`);
+});
+```
+
+Include the generated `config.js` before your other scripts:
+
+```html
+<script src="/config.js"></script>
+```
+
 ## 🌐 Custom Domain with Firebase Hosting
 
 To serve the site on `www.hybriddancers.com`, configure your DNS records as follows:

@@ -12,9 +12,9 @@ import {
 // hard-coding credentials in source control. When bundling this script,
 // provide the values via your build tool or server.
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY || '',
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN || '',
-  projectId: process.env.FIREBASE_PROJECT_ID || ''
+  apiKey: window.CONFIG?.FIREBASE_API_KEY || '',
+  authDomain: window.CONFIG?.FIREBASE_AUTH_DOMAIN || '',
+  projectId: window.CONFIG?.FIREBASE_PROJECT_ID || ''
 };
 
 // Initialize Firebase
