@@ -3,187 +3,880 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hybrid Dancers - First Class FREE | Dance Classes Tempe AZ</title>
-    <meta name="description" content="Join 200+ dancers in Tempe! Shuffling, Hip-Hop & Contemporary fusion classes. ASU students get 20% off. Book your FREE trial class today!">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="urgency-bar">
-        🔥 Limited spots this week—join Tempe's dance community today!
-    </div>
-
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="logo">Hybrid Dancers</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="instructor.html">Instructor</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#community">Community</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li class="account-link"><a id="accountLink" href="login.html">Log In</a></li>
-                <li id="welcomeMsg" class="welcome-msg" style="display:none;"></li>
-                <li class="account-link" id="logoutNavItem" style="display:none;"><a id="logoutNav" href="#">Log Out</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-badge">🏆 Tempe's #1 Dance Fusion Studio</div>
-            <h1>Hybrid Dancers</h1>
-            <div class="offer">START YOUR JOURNEY</div>
-            <p class="tagline">Where Shuffling, Hip-Hop & Contemporary Create Magic<br>Join 200+ dancers in Tempe's most energetic community</p>
-            <div class="cta-container">
-                <a href="services.html" class="cta-primary">Book Your FREE Trial 🎉</a>
-                <a href="instructor.html" class="cta-secondary">Meet Pearla</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="booking-widget">
-        <div class="booking-header">
-            <h2>Available Classes This Week</h2>
-            <div class="spots-left">⚡ Only 12 spots remaining!</div>
-        </div>
-        
-        <div class="class-grid">
-            <div class="class-card popular">
-                <div class="class-time">Tonight 7:00 PM</div>
-                <div class="class-title">Shuffling Basics</div>
-                <div class="class-spots">3 spots left • Beginner friendly</div>
-                <button class="book-btn popular" onclick="bookClass('shuffle-basics')">Book FREE Spot</button>
-            </div>
-            
-            <div class="class-card">
-                <div class="class-time">Tomorrow 6:00 PM</div>
-                <div class="class-title">Hip-Hop Fusion</div>
-                <div class="class-spots">5 spots left • All levels</div>
-                <button class="book-btn" onclick="bookClass('hiphop-fusion')">Book FREE Spot</button>
-            </div>
-            
-            <div class="class-card">
-                <div class="class-time">Thursday 7:30 PM</div>
-                <div class="class-title">Contemporary Flow</div>
-                <div class="class-spots">4 spots left • Intermediate</div>
-                <button class="book-btn" onclick="bookClass('contemporary-flow')">Book FREE Spot</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="community" class="social-proof">
-        <div class="social-proof-header">
-            <h2>Join Tempe's Dance Revolution</h2>
-        </div>
-        
-        <div class="community-stats">
-            <div class="stat">
-                <span class="stat-number">200+</span>
-                <span class="stat-label">Active Dancers</span>
-            </div>
-            <div class="stat">
-                <span class="stat-number">95%</span>
-                <span class="stat-label">Stay After Trial</span>
-            </div>
-            <div class="stat">
-                <span class="stat-number">50+</span>
-                <span class="stat-label">Classes/Month</span>
-            </div>
-        </div>
-
-        <div class="testimonials-grid">
-            <div class="testimonial">
-                <div class="testimonial-text">"I came in as a complete beginner and now I'm performing at local events! Pearla's teaching style makes you feel confident from day one."</div>
-                <div class="testimonial-author">- Sarah, ASU Junior</div>
-            </div>
-            <div class="testimonial">
-                <div class="testimonial-text">"Best workout disguised as pure fun. I've tried every fitness class in Tempe - nothing comes close to this energy."</div>
-                <div class="testimonial-author">- Marcus, Software Engineer</div>
-            </div>
-            <div class="testimonial">
-                <div class="testimonial-text">"Found my people here! It's not just dance classes, it's a whole community of creative, supportive humans."</div>
-                <div class="testimonial-author">- Jess, Graphic Designer</div>
-            </div>
-        </div>
-
-        <div class="instagram-feed">
-            <h3>Follow Our Journey @hybriddancers</h3>
-            <div class="instagram-grid">
-                <div class="instagram-post">Student Spotlight: Emma's Progress</div>
-                <div class="instagram-post">Behind the Scenes: Class Prep</div>
-                <div class="instagram-post">Festival Performance Prep</div>
-                <div class="instagram-post">Community Dance Battle</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="instagram-reels" class="instagram-reels">
-        <h2>🔥 See the Moves – Latest from @hybriddancers</h2>
-        <div id="reels-container">
-            <div id="reels-grid" class="reels-grid"></div>
-        </div>
-        <a href="https://instagram.com/hybriddancers" target="_blank" rel="noopener" class="follow-btn">Follow on Instagram</a>
-    </section>
-
-    <!-- Keep your footer or additional sections here -->
-
-    <script>
-        function bookClass(name) {
-            window.location.href = 'booking.html?class=' + encodeURIComponent(name);
+    <title>Hybrid Dancers - Shuffle Dance Classes | Tempe, Arizona</title>
+    <meta name="description" content="Learn shuffle dance in Tempe, Arizona. Group classes, private lessons, and online tutorials. Join the Hybrid movement - where rhythm meets expression.">
+    <meta name="keywords" content="shuffle dance classes Tempe, private shuffle dance lessons AZ, learn to shuffle Arizona, beginner dance class Tempe, Tempe dance events">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-    </script>
-    <script>
-        async function loadReels() {
-            const token = ''; // Instagram Graph API token
-            const userId = ''; // Business account ID
-            const grid = document.getElementById('reels-grid');
-            const container = document.getElementById('reels-container') || grid;
 
-            if (token && userId) {
-                try {
-                    const resp = await fetch(`https://graph.instagram.com/${userId}/media?fields=media_url,media_type,permalink&access_token=${token}`);
-                    const data = await resp.json();
-                    const reels = (data.data || []).filter(p => p.media_type === 'VIDEO').slice(0, 3);
-                    reels.forEach(reel => {
-                        const vid = document.createElement('video');
-                        vid.src = reel.media_url;
-                        vid.autoplay = true;
-                        vid.muted = true;
-                        vid.loop = true;
-                        vid.playsInline = true;
-                        vid.className = 'reel-video';
-                        grid.appendChild(vid);
-                    });
-                    return;
-                } catch (e) {
-                    console.error('Instagram API error', e);
-                    if (container) {
-                        const msg = document.createElement('p');
-                        msg.textContent = 'Reels could not be loaded.';
-                        msg.className = 'reels-error';
-                        container.appendChild(msg);
-                    }
-                }
+        :root {
+            --maroon: #8C1D40;
+            --gold: #FFC627;
+            --charcoal: #2C2C2C;
+            --white: #FFFFFF;
+            --light-gray: #F8F8F8;
+            --shadow: rgba(140, 29, 64, 0.15);
+            --gradient: linear-gradient(135deg, var(--maroon) 0%, var(--charcoal) 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--charcoal);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(44, 44, 44, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 198, 39, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--gold);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><defs><pattern id="dance-pattern" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="2" fill="%23FFC627" opacity="0.1"/><path d="M10 20 Q20 10 30 20 Q20 30 10 20" stroke="%23FFC627" stroke-width="1" fill="none" opacity="0.05"/></pattern></defs><rect width="200" height="200" fill="url(%23dance-pattern)"/></svg>');
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .hero-video-placeholder {
+            position: absolute;
+            top: 50%;
+            right: 10%;
+            width: 300px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.2rem;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 198, 39, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: var(--white);
+            max-width: 600px;
+            padding: 0 2rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.1;
+        }
+
+        .hero-tagline {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--gold);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            cursor: pointer;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--charcoal);
+            box-shadow: 0 10px 30px rgba(255, 198, 39, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 198, 39, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--maroon);
+            transform: translateY(-3px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 0;
+            background: var(--light-gray);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: var(--maroon);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-image {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px var(--shadow);
+            height: 400px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 6rem 0;
+            background: var(--white);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--maroon);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 50px var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border-top: 5px solid var(--gold);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px var(--shadow);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--maroon);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .service-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .service-price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .service-details {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .service-details li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            color: #666;
+        }
+
+        .service-details li:last-child {
+            border-bottom: none;
+        }
+
+        /* Schedule Section */
+        .schedule {
+            padding: 6rem 0;
+            background: var(--light-gray);
+        }
+
+        .schedule-placeholder {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            box-shadow: 0 15px 50px var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .schedule-placeholder h3 {
+            color: var(--maroon);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Community Section */
+        .community {
+            padding: 6rem 0;
+            background: var(--gradient);
+            color: var(--white);
+        }
+
+        .community-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .community-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 198, 39, 0.3);
+        }
+
+        .community-card:hover {
+            transform: scale(1.05);
+        }
+
+        .community-card h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--charcoal);
+            color: var(--white);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .footer-section a {
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+
+        .contact-info {
+            color: #ccc;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--charcoal);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
             }
 
-            const embeds = [
-                '<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/XXXXXXXXX/"></blockquote>',
-                '<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/YYYYYYYYY/"></blockquote>',
-                '<blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/ZZZZZZZZZ/"></blockquote>'
-            ];
-            embeds.forEach(html => grid.insertAdjacentHTML('beforeend', html));
-            const s = document.createElement('script');
-            s.src = 'https://www.instagram.com/embed.js';
-            s.async = true;
-            grid.appendChild(s);
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-video-placeholder {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-tagline {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .community-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
         }
 
-        document.addEventListener('DOMContentLoaded', loadReels);
+        @media (max-width: 480px) {
+            .hero {
+                padding: 2rem 0;
+            }
+            
+            .service-card {
+                padding: 2rem;
+            }
+            
+            .btn {
+                padding: 0.8rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">HYBRID DANCERS</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Classes</a></li>
+                <li><a href="#schedule">Schedule</a></li>
+                <li><a href="#community">Community</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-video-placeholder">
+            🎵 Shuffle Loop Video 🎵
+        </div>
+        
+        <div class="hero-content">
+            <h1>Find Your Rhythm.<br>Express Your Soul.</h1>
+            <p class="hero-tagline">Shuffle-Based Movement Fusion</p>
+            <p class="hero-description">
+                Welcome to Tempe's newest dance experience. At Hybrid Dancers, we blend the high-energy footwork of shuffle with creative movement fusion. Whether you're a complete beginner or looking to elevate your style, discover what it means to move without limits.
+            </p>
+            <div class="cta-buttons">
+                <a href="#schedule" class="btn btn-primary">Book Your First Class</a>
+                <a href="#services" class="btn btn-secondary">View Offerings</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>What Makes Us Hybrid?</h2>
+                    <p>
+                        At Hybrid Dancers, we believe dance is about connection—to rhythm, to community, and to yourself. 
+                        Our signature approach starts with shuffle fundamentals and evolves into a unique fusion that's 
+                        entirely your own.
+                    </p>
+                    <p>
+                        Founded in the heart of Tempe with Sun Devil pride, we're building a community where movement 
+                        becomes expression, where beginners become confident dancers, and where every session leaves 
+                        you energized and inspired.
+                    </p>
+                    <p>
+                        <strong>Our mission:</strong> Help you reconnect with rhythm, build confidence through movement, 
+                        and join a community that celebrates every dancer's unique style.
+                    </p>
+                    <a href="#services" class="btn btn-primary">Start Your Journey</a>
+                </div>
+                <div class="about-image">
+                    Founder Story Video Coming Soon
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Dance With Us</h2>
+            <p class="section-subtitle">Choose the perfect way to start your Hybrid journey</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Group Classes</h3>
+                    <p>Learn shuffle fundamentals and fusion techniques in our supportive group environment. Perfect for beginners and those who love the energy of dancing with others.</p>
+                    <div class="service-price">$15 <span style="font-size: 1rem; color: #666;">drop-in</span></div>
+                    <div class="service-price">$50 <span style="font-size: 1rem; color: #666;">monthly (4 classes)</span></div>
+                    <ul class="service-details">
+                        <li>60-minute sessions</li>
+                        <li>All skill levels welcome</li>
+                        <li>Shuffle fundamentals + fusion</li>
+                        <li>Small class sizes (max 12)</li>
+                        <li>Community building</li>
+                    </ul>
+                    <a href="#schedule" class="btn btn-primary">Book Group Class</a>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Private Lessons</h3>
+                    <p>One-on-one instruction tailored to your goals, pace, and style. Whether you're preparing for an event or want personalized attention, we've got you covered.</p>
+                    <div class="service-price">$60 <span style="font-size: 1rem; color: #666;">per hour</span></div>
+                    <ul class="service-details">
+                        <li>Customized curriculum</li>
+                        <li>Flexible scheduling</li>
+                        <li>Technique refinement</li>
+                        <li>Goal-oriented training</li>
+                        <li>Bundle discounts available</li>
+                    </ul>
+                    <a href="#schedule" class="btn btn-primary">Book Private Session</a>
+                </div>
+                
+                <div class="service-card">
+                    <h3>Online Tutorials</h3>
+                    <p>Can't make it to the studio? Follow along with our digital content. Start with free tutorials on social media, with premium courses launching soon.</p>
+                    <div class="service-price">Free <span style="font-size: 1rem; color: #666;">to start</span></div>
+                    <ul class="service-details">
+                        <li>Instagram & TikTok tutorials</li>
+                        <li>Beginner-friendly breakdowns</li>
+                        <li>Practice anywhere</li>
+                        <li>Premium courses coming 2025</li>
+                        <li>Community challenges</li>
+                    </ul>
+                    <a href="#community" class="btn btn-primary">Follow Online</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schedule Section -->
+    <section class="schedule" id="schedule">
+        <div class="container">
+            <h2 class="section-title">Ready to Move?</h2>
+            <div class="schedule-placeholder">
+                <h3>📅 Book Your Class</h3>
+                <p style="margin: 1rem 0; color: #666;">
+                    Click below to view our live schedule and book your spot. Classes are filling up fast!
+                </p>
+                <div style="margin: 2rem 0;">
+                    <a href="#" class="btn btn-primary" style="margin: 0.5rem;">View Schedule & Book</a>
+                </div>
+                <p style="font-size: 0.9rem; color: #888;">
+                    Integration: Calendly or Acuity Scheduling embed goes here
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community" id="community">
+        <div class="container">
+            <h2 class="section-title">Join the Movement</h2>
+            <p class="section-subtitle">Connect with fellow dancers and stay inspired</p>
+            
+            <div class="community-grid">
+                <div class="community-card">
+                    <h3>📸 Instagram</h3>
+                    <p>Daily shuffle tips, class highlights, and student features. Follow for inspiration and community updates.</p>
+                    <a href="#" class="btn btn-secondary">@HybridDancersAZ</a>
+                </div>
+                
+                <div class="community-card">
+                    <h3>🎵 TikTok</h3>
+                    <p>Quick tutorials, trending challenges, and behind-the-scenes content. Join our growing community!</p>
+                    <a href="#" class="btn btn-secondary">@HybridDancers</a>
+                </div>
+                
+                <div class="community-card">
+                    <h3>🎪 Pop-Up Events</h3>
+                    <p>Special workshops, community showcases, and dance parties around Tempe. Be the first to know!</p>
+                    <a href="#contact" class="btn btn-secondary">Get Updates</a>
+                </div>
+                
+                <div class="community-card">
+                    <h3>💌 Email Updates</h3>
+                    <p>Weekly tips, class announcements, and exclusive offers. Join our inner circle of dancers.</p>
+                    <a href="#" class="btn btn-secondary">Subscribe</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact & Studio</h3>
+                    <p class="contact-info">📍 Tempe, Arizona</p>
+                    <p class="contact-info">📧 hello@hybriddancers.com</p>
+                    <p class="contact-info">📱 (480) 555-MOVE</p>
+                    <p class="contact-info">🕒 Classes: Mon-Sat</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#about">About Hybrid</a>
+                    <a href="#services">Class Offerings</a>
+                    <a href="#schedule">Book a Class</a>
+                    <a href="#">FAQ</a>
+                    <a href="#">Policies</a>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>What to Bring</h3>
+                    <p class="contact-info">• Comfortable workout clothes</p>
+                    <p class="contact-info">• Clean sneakers</p>
+                    <p class="contact-info">• Water bottle</p>
+                    <p class="contact-info">• Positive energy!</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Follow the Movement</h3>
+                    <a href="#">Instagram</a>
+                    <a href="#">TikTok</a>
+                    <a href="#">YouTube</a>
+                    <a href="#">Email Updates</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Hybrid Dancers Tempe. Where Rhythm Meets Expression. 🔥</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(44, 44, 44, 0.98)';
+                header.style.borderBottom = '1px solid rgba(255, 198, 39, 0.4)';
+            } else {
+                header.style.background = 'rgba(44, 44, 44, 0.95)';
+                header.style.borderBottom = '1px solid rgba(255, 198, 39, 0.2)';
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            // Animate hamburger menu
+            const spans = mobileMenu.querySelectorAll('span');
+            spans.forEach((span, index) => {
+                if (navLinks.classList.contains('active')) {
+                    if (index === 0) span.style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    if (index === 1) span.style.opacity = '0';
+                    if (index === 2) span.style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                } else {
+                    span.style.transform = 'none';
+                    span.style.opacity = '1';
+                }
+            });
+        });
+
+        // Close mobile menu when clicking on a link
+        navLinks.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+                navLinks.classList.remove('active');
+                const spans = mobileMenu.querySelectorAll('span');
+                spans.forEach(span => {
+                    span.style.transform = 'none';
+                    span.style.opacity = '1';
+                });
+            }
+        });
+
+        // Service card interactions
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for scroll animations
+        document.querySelectorAll('.service-card, .community-card, .about-text, .about-image').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // CTA button effects
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.style.transform = 'translateY(-2px)';
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.style.transform = 'translateY(0)';
+            });
+        });
     </script>
-    <script src="https://unpkg.com/scrollreveal"></script>
-    <script src="scripts.js"></script>
-    <script type="module" src="auth.js"></script>
-  </body>
+</body>
 </html>
