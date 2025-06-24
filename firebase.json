@@ -6,12 +6,8 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "redirects": [
-      {
-        "source": "/",
-        "destination": "https://www.hybriddancers.com",
-        "type": 301
-      }
+    "rewrites": [
+      { "source": "**", "destination": "/index.html" }
     ]
   }
 }
