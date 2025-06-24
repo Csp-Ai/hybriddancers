@@ -140,6 +140,10 @@
                 <div id="calendly-fallback" style="margin-top: 1rem;">
                     <a href="https://calendly.com/hybriddancers/class" target="_blank" rel="noopener" class="btn btn-primary">Open Booking Page</a>
                 </div>
+                <div style="margin-top: 1rem; text-align:center;">
+                    <button id="pay-class-btn" class="btn btn-primary">Pay for Class</button>
+                    <p class="payment-note">Secure payment powered by Stripe</p>
+                </div>
             </div>
         </div>
     </section>
@@ -223,6 +227,8 @@
     </footer>
 
     <script async src="https://assets.calendly.com/assets/external/widget.js"></script>
+    <script src="/config.js"></script>
+    <script src="checkout.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>
