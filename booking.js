@@ -1,6 +1,9 @@
-// The Stripe public key should be injected by the server or build tool.
-// Fallback to an empty string to avoid accidental key leakage.
-const stripe = Stripe(window.CONFIG?.STRIPE_PUBLIC_KEY || '');
+let stripe;
+fetch('/config')
+  .then(r => r.json())
+  .then(data => {
+    stripe = Stripe(data.publishableKey);
+  });
 
 document.getElementById('booking-form').addEventListener('submit', async (e) => {
   e.preventDefault();
