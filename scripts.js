@@ -143,4 +143,29 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.style.transform = 'translateY(0)';
         });
     });
+
+    // Calendly fallback handling and click tracking
+    const fallback = document.getElementById('calendly-fallback');
+    const widget = document.getElementById('calendly-widget');
+    if (fallback && widget) {
+        const obs = new MutationObserver(() => {
+            if (widget.querySelector('iframe')) {
+                fallback.style.display = 'none';
+                obs.disconnect();
+            }
+        });
+        obs.observe(widget, { childList: true });
+        setTimeout(() => obs.disconnect(), 10000);
+
+        const link = fallback.querySelector('a');
+        if (link) {
+            link.addEventListener('click', () => {
+                fetch('/api/logs', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'booking_link_click', details: 'index_schedule' })
+                }).catch(() => {});
+            });
+        }
+    }
 });

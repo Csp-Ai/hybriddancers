@@ -101,5 +101,15 @@ app.get('/api/logs', (req, res) => {
   res.json(logs);
 });
 
+app.post('/api/logs', (req, res) => {
+  const { action, details } = req.body || {};
+  if (action) {
+    logAction(action, details || '');
+    res.json({ status: 'logged' });
+  } else {
+    res.status(400).json({ error: 'action required' });
+  }
+});
+
 const PORT = process.env.PORT || 4242;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
