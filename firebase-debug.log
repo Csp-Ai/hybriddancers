@@ -1,0 +1,32 @@
+[debug] [2025-06-24T01:07:09.155Z] ----------------------------------------------------------------------
+[debug] [2025-06-24T01:07:09.157Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ponce\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve --only hosting
+[debug] [2025-06-24T01:07:09.158Z] CLI Version:   14.8.0
+[debug] [2025-06-24T01:07:09.158Z] Platform:      win32
+[debug] [2025-06-24T01:07:09.158Z] Node Version:  v22.16.0
+[debug] [2025-06-24T01:07:09.158Z] Time:          Mon Jun 23 2025 18:07:09 GMT-0700 (Mountain Standard Time)
+[debug] [2025-06-24T01:07:09.158Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-06-24T01:07:09.345Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-06-24T01:07:09.345Z] > authorizing via signed-in user (dance@hybriddancers.com)
+[debug] [2025-06-24T01:07:09.345Z] [iam] checking project hybrid-dancers for permissions ["firebase.projects.get"]
+[debug] [2025-06-24T01:07:09.346Z] Checked if tokens are valid: true, expires at: 1750729679945
+[debug] [2025-06-24T01:07:09.346Z] Checked if tokens are valid: true, expires at: 1750729679945
+[debug] [2025-06-24T01:07:09.347Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/hybrid-dancers:testIamPermissions [none]
+[debug] [2025-06-24T01:07:09.347Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/hybrid-dancers:testIamPermissions x-goog-quota-user=projects/hybrid-dancers
+[debug] [2025-06-24T01:07:09.347Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/hybrid-dancers:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-06-24T01:07:09.767Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/hybrid-dancers:testIamPermissions 200
+[debug] [2025-06-24T01:07:09.767Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/hybrid-dancers:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2025-06-24T01:07:09.768Z] Checked if tokens are valid: true, expires at: 1750729679945
+[debug] [2025-06-24T01:07:09.768Z] Checked if tokens are valid: true, expires at: 1750729679945
+[debug] [2025-06-24T01:07:09.768Z] >>> [apiv2][query] GET https://serviceusage.googleapis.com/v1/projects/hybrid-dancers/services/cloudresourcemanager.googleapis.com [none]
+[debug] [2025-06-24T01:07:09.768Z] >>> [apiv2][(partial)header] GET https://serviceusage.googleapis.com/v1/projects/hybrid-dancers/services/cloudresourcemanager.googleapis.com x-goog-quota-user=projects/hybrid-dancers
+[debug] [2025-06-24T01:07:10.262Z] <<< [apiv2][status] GET https://serviceusage.googleapis.com/v1/projects/hybrid-dancers/services/cloudresourcemanager.googleapis.com 200
+[debug] [2025-06-24T01:07:10.262Z] <<< [apiv2][body] GET https://serviceusage.googleapis.com/v1/projects/hybrid-dancers/services/cloudresourcemanager.googleapis.com [omitted]
+[debug] [2025-06-24T01:07:10.268Z] Checked if tokens are valid: true, expires at: 1750729679945
+[debug] [2025-06-24T01:07:10.268Z] Checked if tokens are valid: true, expires at: 1750729679945
+[debug] [2025-06-24T01:07:10.268Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/hybrid-dancers [none]
+[debug] [2025-06-24T01:07:10.406Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/hybrid-dancers 200
+[debug] [2025-06-24T01:07:10.406Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/hybrid-dancers {"projectNumber":"60132527231","projectId":"hybrid-dancers","lifecycleState":"ACTIVE","name":"Hybrid Dancers","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-06-24T00:49:37.241993Z","parent":{"type":"organization","id":"350706924309"}}
+[debug] [2025-06-24T01:07:10.407Z] Checked if tokens are valid: true, expires at: 1750729679945
+[debug] [2025-06-24T01:07:10.407Z] Checked if tokens are valid: true, expires at: 1750729679945
+[debug] [2025-06-24T01:07:10.407Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/hybrid-dancers/sites 
