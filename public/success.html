@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful | Hybrid Dancers</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%E2%9A%A1%3C/text%3E%3C/svg%3E"/>
+    <link rel="canonical" href="https://www.hybriddancers.com/success.html">
+    <meta property="og:title" content="Payment Successful - Hybrid Dancers">
+    <meta property="og:description" content="Your class booking is confirmed.">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="message">
+        <h1>Payment Successful!</h1>
+        <p>Your purchase is confirmed. We'll email you class details soon.</p>
+        <p><a href="index.html">Back to Home</a></p>
+        <p class="payment-note">Secure payment powered by Stripe</p>
+    </div>
+    <script src="scripts.js"></script>
+    <script>
+    const params = new URLSearchParams(window.location.search);
+    const sessionId = params.get('session_id');
+    if (sessionId) {
+      fetch('/api/logs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action: 'payment_confirmed', details: sessionId })
+      });
+    }
+    </script>
+</body>
+</html>
