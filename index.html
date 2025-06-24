@@ -136,15 +136,10 @@
             <h2 class="section-title">Ready to Move?</h2>
             <div class="schedule-placeholder">
                 <h3>📅 Book Your Class</h3>
-                <p style="margin: 1rem 0; color: #666;">
-                    Click below to view our live schedule and book your spot. Classes are filling up fast!
-                </p>
-                <div style="margin: 2rem 0;">
-                    <a href="#" class="btn btn-primary" style="margin: 0.5rem;">View Schedule & Book</a>
+                <div id="calendly-widget" class="calendly-inline-widget" data-url="https://calendly.com/hybriddancers/class?primary_color=8C1D40&text_color=2C2C2C&background_color=FFFFFF" style="min-width:320px; height:650px;"></div>
+                <div id="calendly-fallback" style="margin-top: 1rem;">
+                    <a href="https://calendly.com/hybriddancers/class" target="_blank" rel="noopener" class="btn btn-primary">Open Booking Page</a>
                 </div>
-                <p style="font-size: 0.9rem; color: #888;">
-                    Integration: Calendly or Acuity Scheduling embed goes here
-                </p>
             </div>
         </div>
     </section>
@@ -227,6 +222,7 @@
         </div>
     </footer>
 
+    <script async src="https://assets.calendly.com/assets/external/widget.js"></script>
     <script src="scripts.js"></script>
 </body>
 </html>

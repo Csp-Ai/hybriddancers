@@ -1314,6 +1314,18 @@
             margin-bottom: 1rem;
         }
 
+        .calendly-inline-widget {
+            width: 100%;
+            border: 2px solid var(--maroon);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow);
+        }
+
+        #calendly-fallback {
+            margin-top: 1rem;
+        }
+
         /* Community Section */
         .community {
             padding: 6rem 0;
