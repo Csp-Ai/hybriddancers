@@ -5,6 +5,9 @@ const path = require('path');
 const fs = require('fs');
 const { nanoid } = require('nanoid');
 
+const PORT = process.env.PORT || 4242;
+const DOMAIN_URL = process.env.DOMAIN_URL || `http://localhost:${PORT}`;
+
 const app = express();
 app.use(express.json());
 if (process.env.NODE_ENV !== 'development') {
@@ -16,6 +19,19 @@ if (process.env.NODE_ENV !== 'development') {
   });
 }
 app.use(express.static(path.join(__dirname)));
+
+app.get('/config.js', (req, res) => {
+  res.type('js').send(`window.CONFIG = ${JSON.stringify({
+    STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY,
+    FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
+    FIREBASE_AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
+    FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
+    FIREBASE_STORAGE_BUCKET: process.env.FIREBASE_STORAGE_BUCKET,
+    FIREBASE_MESSAGING_SENDER_ID: process.env.FIREBASE_MESSAGING_SENDER_ID,
+    FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
+    FIREBASE_MEASUREMENT_ID: process.env.FIREBASE_MEASUREMENT_ID
+  })};`);
+});
 
 const bookingsFile = path.join(__dirname, 'data', 'bookings.json');
 const logsFile = path.join(__dirname, 'data', 'logs.json');
@@ -46,19 +62,16 @@ app.post('/create-checkout-session', async (req, res) => {
       mode: 'payment',
       line_items: [
         {
-          price_data: {
-            currency: 'usd',
-            product_data: { name: `${classType} - Drop-In Class` },
-            unit_amount: 2000,
-          },
+          price: process.env.STRIPE_PRICE_ID,
           quantity: 1,
         },
       ],
       metadata: { name, email, classType },
-      success_url: 'https://www.hybriddancers.com/thank-you.html',
-      cancel_url: 'https://www.hybriddancers.com/booking.html',
+      success_url: `${DOMAIN_URL}/success.html?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${DOMAIN_URL}/cancel.html`,
     });
 
+    logAction('create_checkout_session', session.id);
     res.json({ id: session.id });
   } catch (err) {
     console.error(err);
@@ -111,5 +124,4 @@ app.post('/api/logs', (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 4242;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

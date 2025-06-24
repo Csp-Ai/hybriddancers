@@ -1480,13 +1480,19 @@
             .hero {
                 padding: 2rem 0;
             }
-            
+
             .service-card {
                 padding: 2rem;
             }
-            
+
             .btn {
                 padding: 0.8rem 1.5rem;
                 font-size: 0.9rem;
             }
         }
+
+.payment-note {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.5rem;
+}
