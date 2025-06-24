@@ -1,6 +1,11 @@
-const stripe = Stripe(window.CONFIG?.STRIPE_PUBLIC_KEY || '');
+let stripe;
+fetch('/config')
+  .then(r => r.json())
+  .then(data => {
+    stripe = Stripe(data.publishableKey);
+  });
 
-const btn = document.getElementById('pay-class-btn');
+const btn = document.getElementById('checkout-button');
 if (btn) {
   btn.addEventListener('click', async (e) => {
     e.preventDefault();

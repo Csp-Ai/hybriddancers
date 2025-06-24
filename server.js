@@ -20,6 +20,10 @@ if (process.env.NODE_ENV !== 'development') {
 }
 app.use(express.static(path.join(__dirname)));
 
+app.get('/config', (req, res) => {
+  res.send({ publishableKey: process.env.STRIPE_PUBLISHABLE_KEY });
+});
+
 app.get('/config.js', (req, res) => {
   res.type('js').send(`window.CONFIG = ${JSON.stringify({
     STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY,
