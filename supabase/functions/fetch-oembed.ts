@@ -15,8 +15,15 @@ serve(async (req) => {
     return new Response(cached.data, { headers: { "Content-Type": "application/json" } });
   }
 
-  const token = Deno.env.get('IG_OEMBED_TOKEN') ?? '';
-  const endpoint = `https://graph.facebook.com/v18.0/instagram_oembed?omitscript=true&url=${encodeURIComponent(url)}${token ? `&access_token=${token}` : ''}`;
+  let endpoint = '';
+  if (url.includes('instagram.com')) {
+    const token = Deno.env.get('IG_OEMBED_TOKEN') ?? '';
+    endpoint = `https://graph.facebook.com/v18.0/instagram_oembed?omitscript=true&url=${encodeURIComponent(url)}${token ? `&access_token=${token}` : ''}`;
+  } else if (url.includes('tiktok.com')) {
+    endpoint = `https://www.tiktok.com/oembed?url=${encodeURIComponent(url)}`;
+  } else {
+    return new Response('unsupported host', { status: 400 });
+  }
   try {
     const res = await fetch(endpoint);
     const text = await res.text();

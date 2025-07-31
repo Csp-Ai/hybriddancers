@@ -4,7 +4,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const path = require('path');
 const fs = require('fs');
 const { nanoid } = require('nanoid');
-const fetchInstagramEmbed = require('./api/fetchInstagramEmbed');
+const fetchOEmbed = require('./api/fetchOEmbed');
 
 const PORT = process.env.PORT || 4242;
 const DOMAIN_URL = process.env.DOMAIN_URL || `http://localhost:${PORT}`;
@@ -108,7 +108,7 @@ app.delete('/api/bookings/:id', (req, res) => {
 });
 
 // Instagram oEmbed proxy
-app.get('/api/fetchInstagramEmbed', fetchInstagramEmbed);
+app.get('/api/fetchOEmbed', fetchOEmbed);
 
 // Aggregate social feed
 app.get('/api/social-feed', async (req, res) => {
@@ -120,7 +120,7 @@ app.get('/api/social-feed', async (req, res) => {
   try {
     const ig = await Promise.all(
       reels.map(url =>
-        fetch(`${req.protocol}://${req.get('host')}/api/fetchInstagramEmbed?url=${encodeURIComponent(url)}`)
+        fetch(`${req.protocol}://${req.get('host')}/api/fetchOEmbed?url=${encodeURIComponent(url)}`)
           .then(r => r.json())
           .catch(() => ({ html: `<iframe src="${url}/embed" allowfullscreen loading="lazy"></iframe>` }))
       )

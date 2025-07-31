@@ -1,6 +1,44 @@
 export function SocialMediaShowcase(section) {
   if (!section) return;
 
+  const allowed = /(?:^|\.)hybriddancers\.com$/i.test(window.location.hostname);
+  if (!allowed) return;
+
+  const addSkeleton = (el) => {
+    const sk = document.createElement('div');
+    sk.className = 'embed-skeleton';
+    el.appendChild(sk);
+    return sk;
+  };
+
+  const loadEmbed = (el, url) => {
+    if (!url) return;
+    const sk = addSkeleton(el);
+    fetch(`/api/fetchOEmbed?url=${encodeURIComponent(url)}`)
+      .then((r) => r.json())
+      .then((d) => {
+        el.innerHTML = d.html || `<iframe src="${url}/embed" allowfullscreen loading="lazy"></iframe>`;
+        if (url.includes('tiktok')) {
+          const s = document.createElement('script');
+          s.src = 'https://www.tiktok.com/embed.js';
+          document.body.appendChild(s);
+        }
+      })
+      .catch(() => {
+        el.innerHTML = '<p class="embed-error">Unable to load content.</p>';
+      })
+      .finally(() => {
+        const obs = new MutationObserver((m, o) => {
+          if (el.querySelector('iframe') || el.querySelector('blockquote')) {
+            sk.remove();
+            el.classList.add('loaded');
+            o.disconnect();
+          }
+        });
+        obs.observe(el, { childList: true, subtree: true });
+      });
+  };
+
   const start = () => {
     const { SOCIAL_LINKS } = window;
     if (!SOCIAL_LINKS) return;
@@ -20,17 +58,7 @@ export function SocialMediaShowcase(section) {
     const tiktok = section.querySelector('.tiktok-embed');
     if (tiktok) {
       const ttUrl = tiktok.dataset.url;
-      if (ttUrl) {
-        fetch(`https://www.tiktok.com/oembed?url=${encodeURIComponent(ttUrl)}`)
-          .then(r => r.json())
-          .then(d => {
-            tiktok.innerHTML = d.html || '';
-            const s = document.createElement('script');
-            s.src = 'https://www.tiktok.com/embed.js';
-            document.body.appendChild(s);
-          })
-          .catch(() => {});
-      }
+      loadEmbed(tiktok, ttUrl);
     }
 
     const fb = section.querySelector('.fb-post');
@@ -38,6 +66,7 @@ export function SocialMediaShowcase(section) {
       const fbUrl = fb.dataset.url;
       if (fbUrl) {
         const endpoint = `https://graph.facebook.com/v10.0/oembed_page?url=${encodeURIComponent(fbUrl)}`;
+        const sk = addSkeleton(fb);
         fetch(endpoint)
           .then(r => r.json())
           .then(d => {
@@ -50,7 +79,19 @@ export function SocialMediaShowcase(section) {
               window.FB.XFBML.parse(fb);
             }
           })
-          .catch(() => {});
+          .catch(() => {
+            fb.innerHTML = '<p class="embed-error">Unable to load content.</p>';
+          })
+          .finally(() => {
+            const check = () => {
+              if (fb.querySelector('iframe') || fb.querySelector('blockquote')) {
+                sk.remove();
+              } else {
+                requestAnimationFrame(check);
+              }
+            };
+            requestAnimationFrame(check);
+          });
       }
     }
   };
