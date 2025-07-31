@@ -38,10 +38,24 @@ document.addEventListener('DOMContentLoaded', () => {
             'https://www.instagram.com/p/CyDyapCrkYZ',
             'https://www.instagram.com/p/Cx7OPawrQxt'
         ];
-        SocialReelCarousel(carouselEl, reelUrls).catch(() => {
-            const fb = document.getElementById('reel-fallback');
-            if (fb) fb.style.display = 'block';
-        });
+        const startCarousel = () => {
+            SocialReelCarousel(carouselEl, reelUrls).catch(() => {
+                const fb = document.getElementById('reel-fallback');
+                if (fb) fb.style.display = 'block';
+            });
+        };
+        const section = document.getElementById('latest-reels');
+        if ('IntersectionObserver' in window && section) {
+            const ob = new IntersectionObserver((entries, o) => {
+                if (entries[0].isIntersecting) {
+                    startCarousel();
+                    o.disconnect();
+                }
+            }, { rootMargin: '0px 0px 200px 0px' });
+            ob.observe(section);
+        } else {
+            startCarousel();
+        }
     }
 
     if (typeof ScrollReveal !== 'undefined') {
