@@ -1,3 +1,5 @@
+import { injectEmbed } from '../socialEmbed.utils.js';
+
 export function SocialMediaShowcase(section) {
   if (!section) return;
 
@@ -14,29 +16,16 @@ export function SocialMediaShowcase(section) {
   const loadEmbed = (el, url) => {
     if (!url) return;
     const sk = addSkeleton(el);
-    fetch(`/api/fetchOEmbed?url=${encodeURIComponent(url)}`)
-      .then((r) => r.json())
-      .then((d) => {
-        el.innerHTML = d.html || `<iframe src="${url}/embed" allowfullscreen loading="lazy"></iframe>`;
-        if (url.includes('tiktok')) {
-          const s = document.createElement('script');
-          s.src = 'https://www.tiktok.com/embed.js';
-          document.body.appendChild(s);
+    injectEmbed(el, url).finally(() => {
+      const obs = new MutationObserver((m, o) => {
+        if (el.querySelector('iframe') || el.querySelector('blockquote')) {
+          sk.remove();
+          el.classList.add('loaded');
+          o.disconnect();
         }
-      })
-      .catch(() => {
-        el.innerHTML = '<p class="embed-error">Unable to load content.</p>';
-      })
-      .finally(() => {
-        const obs = new MutationObserver((m, o) => {
-          if (el.querySelector('iframe') || el.querySelector('blockquote')) {
-            sk.remove();
-            el.classList.add('loaded');
-            o.disconnect();
-          }
-        });
-        obs.observe(el, { childList: true, subtree: true });
       });
+      obs.observe(el, { childList: true, subtree: true });
+    });
   };
 
   const start = () => {
