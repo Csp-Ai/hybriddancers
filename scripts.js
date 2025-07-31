@@ -1,3 +1,4 @@
+import { SocialReelCarousel } from './components/SocialReelCarousel.js';
 console.log('✅ App initialized.');
 
 // ScrollReveal animations for Hybrid Dancers site
@@ -30,13 +31,26 @@ window.showToast = showToast;
 document.addEventListener('DOMContentLoaded', () => {
     createToastContainer();
 
+    const carouselEl = document.getElementById('reel-carousel');
+    if (carouselEl) {
+        const reelUrls = [
+            'https://www.instagram.com/p/CyGZc8UPL2g',
+            'https://www.instagram.com/p/CyDyapCrkYZ',
+            'https://www.instagram.com/p/Cx7OPawrQxt'
+        ];
+        SocialReelCarousel(carouselEl, reelUrls).catch(() => {
+            const fb = document.getElementById('reel-fallback');
+            if (fb) fb.style.display = 'block';
+        });
+    }
+
     if (typeof ScrollReveal !== 'undefined') {
         const sr = ScrollReveal({ distance: '40px', duration: 800, easing: 'ease-out', cleanup: true });
         sr.reveal('.hero-content', { opacity: 0, duration: 1000 });
         sr.reveal('.class-card', { origin: 'bottom', interval: 100 });
         sr.reveal('.pricing-card', { origin: 'bottom', interval: 100 });
         sr.reveal('.instagram-feed', { delay: 300, origin: 'bottom' });
-        sr.reveal('.instagram-reels', { delay: 300, origin: 'bottom' });
+        sr.reveal('.latest-reels', { delay: 300, origin: 'bottom' });
     }
 
     // Smooth scrolling for navigation links

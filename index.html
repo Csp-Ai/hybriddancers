@@ -8,6 +8,8 @@
     <meta name="keywords" content="shuffle dance classes Tempe, private shuffle dance lessons AZ, learn to shuffle Arizona, beginner dance class Tempe, Tempe dance events">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/css/splide.min.css">
+    <script src="https://unpkg.com/scrollreveal"></script>
 </head>
 <body>
     <!-- Header -->
@@ -49,15 +51,12 @@
         </div>
     </section>
 
-    <section class="instagram-reels" id="gallery">
+    <section class="latest-reels" id="latest-reels" aria-labelledby="reels-heading">
         <div class="container">
-            <h2 class="section-title">Latest Moves</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <iframe class="lazy-embed" data-embed-src="https://www.instagram.com/hybriddancers/embed" title="Instagram video by Hybrid Dancers" allowfullscreen></iframe>
-                </div>
-            </div>
-            <a href="https://www.instagram.com/hybriddancers/" class="follow-btn" target="_blank" rel="noopener">Follow @hybriddancers</a>
+            <h2 id="reels-heading" class="section-title">Latest Moves</h2>
+            <div id="reel-carousel" aria-live="polite"></div>
+            <p id="reel-fallback" class="reels-error" style="display:none;">Unable to load reels.</p>
+            <a href="https://www.instagram.com/hybriddancers/" class="follow-btn" target="_blank" rel="noopener">Watch on Instagram</a>
         </div>
     </section>
 
@@ -260,6 +259,7 @@
     </footer>
 
     <script async src="https://assets.calendly.com/assets/external/widget.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
     <script src="/config.js"></script>
     <script src="checkout.js"></script>
     <script type="module" src="scripts.js"></script>

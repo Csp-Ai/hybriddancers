@@ -761,24 +761,45 @@
             line-height: 1.6;
         }
 
-        .instagram-reels {
-            background: linear-gradient(135deg, #8C1D40, #FFB300);
-            color: #F5F5DC;
-            padding: 3rem 1rem;
-            text-align: center;
-        }
 
-        .reels-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 1rem;
+.latest-reels {
+    background: linear-gradient(135deg, #8C1D40, #FFB300);
+    color: #F5F5DC;
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+
+        #latest-reels .splide {
             margin-top: 2rem;
         }
 
-        .reel-video {
+        #latest-reels .splide__slide {
+            position: relative;
+        }
+
+        .reel-thumb {
             width: 100%;
+            padding-top: 177%;
+            background: #000;
             border-radius: 15px;
-            overflow: hidden;
+        }
+
+        #latest-reels iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            #latest-reels .splide__slide {
+                width: 80%;
+                margin: 0 auto;
+            }
         }
 
         .follow-btn {
