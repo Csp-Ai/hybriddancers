@@ -1,12 +1,6 @@
 export function SocialMediaShowcase(section) {
   if (!section) return;
 
-  const preview = new URLSearchParams(window.location.search).get('previewSocial');
-  if (preview !== 'true') {
-    section.style.display = 'none';
-    return;
-  }
-
   const start = () => {
     const { SOCIAL_LINKS } = window;
     if (!SOCIAL_LINKS) return;
@@ -23,23 +17,41 @@ export function SocialMediaShowcase(section) {
       }
     }
 
-    const loadTikTok = () => {
-      if (!section.querySelector('.tiktok-embed')) {
-        return;
-      }
-      if (!document.querySelector('script[src="https://www.tiktok.com/embed.js"]')) {
-        const script = document.createElement('script');
-        script.src = 'https://www.tiktok.com/embed.js';
-        document.body.appendChild(script);
-      }
-    };
-
     const tiktok = section.querySelector('.tiktok-embed');
-    if (tiktok) loadTikTok();
+    if (tiktok) {
+      const ttUrl = tiktok.dataset.url;
+      if (ttUrl) {
+        fetch(`https://www.tiktok.com/oembed?url=${encodeURIComponent(ttUrl)}`)
+          .then(r => r.json())
+          .then(d => {
+            tiktok.innerHTML = d.html || '';
+            const s = document.createElement('script');
+            s.src = 'https://www.tiktok.com/embed.js';
+            document.body.appendChild(s);
+          })
+          .catch(() => {});
+      }
+    }
 
     const fb = section.querySelector('.fb-post');
-    if (fb && !fb.src) {
-      fb.src = `${SOCIAL_LINKS.facebook}embed`;
+    if (fb) {
+      const fbUrl = fb.dataset.url;
+      if (fbUrl) {
+        const endpoint = `https://graph.facebook.com/v10.0/oembed_page?url=${encodeURIComponent(fbUrl)}`;
+        fetch(endpoint)
+          .then(r => r.json())
+          .then(d => {
+            fb.innerHTML = d.html || '';
+            if (!document.querySelector('script[src^="https://connect.facebook.net"]')) {
+              const script = document.createElement('script');
+              script.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v17.0';
+              document.body.appendChild(script);
+            } else if (window.FB && window.FB.XFBML) {
+              window.FB.XFBML.parse(fb);
+            }
+          })
+          .catch(() => {});
+      }
     }
   };
 

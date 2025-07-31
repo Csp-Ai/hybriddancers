@@ -33,8 +33,18 @@ function showToast(message, type = 'info') {
 
 window.showToast = showToast;
 
+function applySocialLinks() {
+    if (!window.SOCIAL_LINKS) return;
+    document.querySelectorAll('[data-social]').forEach(el => {
+        const key = el.dataset.social;
+        const url = window.SOCIAL_LINKS[key];
+        if (url) el.href = url;
+    });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     createToastContainer();
+    applySocialLinks();
 
     const carouselEl = document.getElementById('reel-carousel');
     if (carouselEl) {
@@ -210,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Lazy load social embeds
-    const lazyEmbeds = document.querySelectorAll('.lazy-embed, .tiktok-embed, .fb-page');
+    const lazyEmbeds = document.querySelectorAll('.lazy-embed, .tiktok-embed, .fb-page, .fb-post');
     if (lazyEmbeds.length) {
         const loadScript = (src) => {
             if (document.querySelector(`script[src="${src}"]`)) return;
@@ -228,7 +238,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         el.src = el.dataset.embedSrc;
                     } else if (el.classList.contains('tiktok-embed')) {
                         loadScript('https://www.tiktok.com/embed.js');
-                    } else if (el.classList.contains('fb-page')) {
+                    } else if (el.classList.contains('fb-page') || el.classList.contains('fb-post')) {
                         loadScript('https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v17.0');
                     }
                     obsr.unobserve(el);
