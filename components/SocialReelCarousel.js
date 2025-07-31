@@ -50,7 +50,7 @@ export async function SocialReelCarousel(container, reels = []) {
       if (entry.isIntersecting) {
         const slide = entry.target;
         if (!slide.dataset.loaded) {
-          const api = `/api/fetchInstagramEmbed?url=${encodeURIComponent(slide.dataset.url)}`;
+          const api = `/api/fetchOEmbed?url=${encodeURIComponent(slide.dataset.url)}`;
           fetch(api)
             .then((r) => r.json())
             .then((d) => {
