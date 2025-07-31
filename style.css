@@ -780,7 +780,7 @@
 
         .reel-thumb {
             width: 100%;
-            padding-top: 177%;
+            padding-top: 100%;
             background: #000;
             border-radius: 15px;
         }
@@ -798,6 +798,13 @@
         @media (max-width: 768px) {
             #latest-reels .splide__slide {
                 width: 80%;
+                margin: 0 auto;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #latest-reels .splide__slide {
+                max-width: 480px;
                 margin: 0 auto;
             }
         }
