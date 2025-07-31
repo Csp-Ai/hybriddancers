@@ -170,4 +170,33 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    // Lazy load social embeds
+    const lazyEmbeds = document.querySelectorAll('.lazy-embed, .tiktok-embed, .fb-page');
+    if (lazyEmbeds.length) {
+        const loadScript = (src) => {
+            if (document.querySelector(`script[src="${src}"]`)) return;
+            const s = document.createElement('script');
+            s.src = src;
+            s.defer = true;
+            document.body.appendChild(s);
+        };
+
+        const embedObserver = new IntersectionObserver((entries, obsr) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    if (el.classList.contains('lazy-embed')) {
+                        el.src = el.dataset.embedSrc;
+                    } else if (el.classList.contains('tiktok-embed')) {
+                        loadScript('https://www.tiktok.com/embed.js');
+                    } else if (el.classList.contains('fb-page')) {
+                        loadScript('https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v17.0');
+                    }
+                    obsr.unobserve(el);
+                }
+            });
+        }, { rootMargin: '0px 0px 200px 0px' });
+        lazyEmbeds.forEach(el => embedObserver.observe(el));
+    }
 });
