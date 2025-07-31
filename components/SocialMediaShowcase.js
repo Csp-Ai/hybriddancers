@@ -13,19 +13,33 @@ export function SocialMediaShowcase(section) {
     return sk;
   };
 
+  const showFallback = (el, url) => {
+    const link = url ? `<a href="${url}" target="_blank" rel="noopener">Open post</a>` : '';
+    el.innerHTML = `<p class="embed-error">Follow us on Instagram to view our latest moves. ${link}</p>`;
+  };
+
   const loadEmbed = (el, url) => {
     if (!url) return;
     const sk = addSkeleton(el);
-    injectEmbed(el, url).finally(() => {
-      const obs = new MutationObserver((m, o) => {
-        if (el.querySelector('iframe') || el.querySelector('blockquote')) {
-          sk.remove();
-          el.classList.add('loaded');
-          o.disconnect();
+    injectEmbed(el, url)
+      .then(() => {
+        // if injected html is empty or lacks iframe/blockquote, show fallback
+        const hasContent = el.querySelector('iframe') || el.querySelector('blockquote');
+        if (!hasContent) {
+          showFallback(el, url);
         }
+      })
+      .catch(() => showFallback(el, url))
+      .finally(() => {
+        const obs = new MutationObserver((m, o) => {
+          if (el.querySelector('iframe') || el.querySelector('blockquote')) {
+            sk.remove();
+            el.classList.add('loaded');
+            o.disconnect();
+          }
+        });
+        obs.observe(el, { childList: true, subtree: true });
       });
-      obs.observe(el, { childList: true, subtree: true });
-    });
   };
 
   const start = () => {
