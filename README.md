@@ -11,6 +11,8 @@ This repository contains:
 - The **public website** for Hybrid Dancers (`index.html`, `services.html`, etc.)
 - A **booking experience** that lets users reserve classes online
 - Tools for analyzing and testing site quality
+- A Supabase backend replacing Firebase for auth and data
+- Automatic deployments to Vercel on every push to `main`
 
 The site is designed for maximum impact on both desktop and mobile, prioritizing **clarity, accessibility, and conversion**.
 
@@ -59,19 +61,14 @@ Set ADMIN_EMAIL to receive the daily signup summary from `functions/dailyClassSu
 
 ## ⚙️ Runtime Configuration
 
-Client-side scripts expect a global `window.CONFIG` object containing your Stripe and Firebase keys. You can serve these values dynamically from Express by adding a route:
+Client-side scripts expect a global `window.CONFIG` object containing your Stripe and Supabase keys. You can serve these values dynamically from Express by adding a route:
 
 ```javascript
 app.get('/config.js', (req, res) => {
   res.type('js').send(`window.CONFIG = ${JSON.stringify({
     STRIPE_PUBLIC_KEY: process.env.STRIPE_PUBLIC_KEY,
-    FIREBASE_API_KEY: process.env.FIREBASE_API_KEY,
-    FIREBASE_AUTH_DOMAIN: process.env.FIREBASE_AUTH_DOMAIN,
-    FIREBASE_PROJECT_ID: process.env.FIREBASE_PROJECT_ID,
-    FIREBASE_STORAGE_BUCKET: process.env.FIREBASE_STORAGE_BUCKET,
-    FIREBASE_MESSAGING_SENDER_ID: process.env.FIREBASE_MESSAGING_SENDER_ID,
-    FIREBASE_APP_ID: process.env.FIREBASE_APP_ID,
-    FIREBASE_MEASUREMENT_ID: process.env.FIREBASE_MEASUREMENT_ID
+    SUPABASE_URL: process.env.SUPABASE_URL,
+    SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY
   })};`);
 });
 ```
@@ -82,16 +79,16 @@ Include the generated `config.js` before your other scripts:
 <script src="/config.js"></script>
 ```
 
-## 🌐 Custom Domain with Firebase Hosting
+## 🌐 Custom Domain with Vercel
 
-To serve the site on `www.hybriddancers.com`, configure your DNS records as follows:
+To serve the site on `www.hybriddancers.com`, configure your DNS records to point to Vercel:
 
 | Type | Host | Value |
 |------|------|-------|
-| `A`  | `@`  | `199.36.158.100` |
-| `A`  | `www`| `199.36.158.100` |
+| `A`  | `@`  | `76.76.21.21` |
+| `A`  | `www`| `76.76.21.21` |
 
-Remove any existing records that point to GitHub Pages or other providers (for example the `185.199.x.x` records or a `CNAME` to `csp-ai.github.io`). After updating, allow DNS to propagate and let Firebase provision the SSL certificate. Once verification is complete, `https://www.hybriddancers.com` will load securely.
+Remove any existing records that point elsewhere. After updating, allow DNS to propagate and let Vercel provision the SSL certificate. Once verification is complete, `https://www.hybriddancers.com` will load securely.
 
 ## 🛠️ Admin Dashboard
 
@@ -125,13 +122,13 @@ Load the page after running the agents to explore trends and download the raw da
 - Track your mood in the Wellness Journal and view trends
 - Read simple **AI Insights** about your attendance and mood
 
-All data is tied to your logged in Firebase account. Mock data is used for class lists and events, but it can be replaced with real backend calls.
+All data is tied to your logged in Supabase account. Mock data is used for class lists and events, but it can be replaced with real backend calls.
 
 ## 🚀 AI Ops Dashboard
 
-This dashboard is secured through Firebase Authentication and only renders for approved admin emails.
+This dashboard is secured through Supabase Auth and only renders for approved admin emails.
 
-`ai-ops-dashboard.html` provides an admin-only overview of the entire project health and business metrics. After Firebase auth verifies an admin email, it summarizes code stats, test coverage and deployment status, displays KPIs (bookings, revenue, signups, issues) with charts, and surfaces AI-driven insights with suggested Copilot prompts. A secure append-only log book records every admin action. Use it as the central operations hub.
+`ai-ops-dashboard.html` provides an admin-only overview of the entire project health and business metrics. After Supabase auth verifies an admin email, it summarizes code stats, test coverage and deployment status, displays KPIs (bookings, revenue, signups, issues) with charts, and surfaces AI-driven insights with suggested Copilot prompts. A secure append-only log book records every admin action. Use it as the central operations hub.
 
 ### Local access
 

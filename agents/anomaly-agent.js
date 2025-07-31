@@ -5,6 +5,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { logToSupabase } = require('./supabase-log');
 
 const bookingsFile = path.join(__dirname, '..', 'data', 'bookings.json');
 const logFile = path.join(__dirname, '..', 'data', 'logs.json');
@@ -25,6 +26,7 @@ function logAction(action, details) {
   const logs = readJson(logFile);
   logs.push({ time: new Date().toISOString(), action, details });
   writeJson(logFile, logs);
+  logToSupabase(action, details);
 }
 
 function stats(counts) {
