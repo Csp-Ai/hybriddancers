@@ -81,14 +81,16 @@ Include the generated `config.js` before your other scripts:
 
 ## 🌐 Custom Domain with Vercel
 
-To serve the site on `www.hybriddancers.com`, configure your DNS records to point to Vercel:
+Both `hybriddancers.com` and `www.hybriddancers.com` are configured in Vercel. The root domain is marked as **primary** so traffic from `www` or the default `*.vercel.app` URL redirects to the canonical HTTPS site.
 
-| Type | Host | Value |
-|------|------|-------|
-| `A`  | `@`  | `76.76.21.21` |
-| `A`  | `www`| `76.76.21.21` |
+Configure DNS with the following records:
 
-Remove any existing records that point elsewhere. After updating, allow DNS to propagate and let Vercel provision the SSL certificate. Once verification is complete, `https://www.hybriddancers.com` will load securely.
+| Type   | Host | Value             |
+|--------|------|------------------|
+| `A`    | `@`  | `76.76.21.21`    |
+| `CNAME`| `www`| `cname.vercel-dns.com.` |
+
+After the records propagate Vercel automatically provisions SSL certificates. Custom fallback pages `error.html` (for 404s) and `offline.html` are bundled with the deployment and served when appropriate.
 
 ## 🛠️ Admin Dashboard
 
