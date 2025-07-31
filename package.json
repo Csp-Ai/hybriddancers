@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test:agents": "node tests/anomaly-agent.test.js && node tests/forecast-agent.test.js && node tests/trends-agent.test.js && node tests/dashboard-insights.test.js"
   },
   "dependencies": {
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "firebase": "^12.0.0",
+    "@supabase/supabase-js": "^2.39.5",
     "nanoid": "^4.0.0",
     "stripe": "^12.15.0"
   }

@@ -1,27 +1,5 @@
-import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-  onAuthStateChanged
-} from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+import { supabase } from './supabaseClient.js';
 
-// Firebase configuration - values provided in Firebase console
-// Configuration values should come from environment variables to avoid
-// hard-coding credentials in source control. When bundling this script,
-// provide the values via your build tool or server.
-const firebaseConfig = {
-  apiKey: window.CONFIG?.FIREBASE_API_KEY || '',
-  authDomain: window.CONFIG?.FIREBASE_AUTH_DOMAIN || '',
-  projectId: window.CONFIG?.FIREBASE_PROJECT_ID || ''
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app);
-
-// Expose current user ID for other modules
 export let currentUserId = null;
 
 function updateNav(user) {
@@ -30,7 +8,7 @@ function updateNav(user) {
   const welcomeMsg = document.getElementById('welcomeMsg');
 
   if (user) {
-    currentUserId = user.uid;
+    currentUserId = user.id;
     if (loginLink) {
       loginLink.textContent = 'Dashboard';
       loginLink.href = 'dashboard.html';
@@ -51,7 +29,15 @@ function updateNav(user) {
   }
 }
 
-onAuthStateChanged(auth, updateNav);
+async function initAuth() {
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+  updateNav(session?.user || null);
+  supabase.auth.onAuthStateChange((_event, session) => {
+    updateNav(session?.user || null);
+  });
+}
 
 function handlePasswordToggles() {
   document.querySelectorAll('.toggle-password').forEach(btn => {
@@ -70,6 +56,7 @@ function handlePasswordToggles() {
 
 document.addEventListener('DOMContentLoaded', () => {
   handlePasswordToggles();
+  initAuth();
 
   const signupForm = document.getElementById('signup-form');
   if (signupForm) {
@@ -77,11 +64,11 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const email = signupForm.signupEmail.value;
       const password = signupForm.signupPassword.value;
-      try {
-        await createUserWithEmailAndPassword(auth, email, password);
+      const { error } = await supabase.auth.signUp({ email, password });
+      if (error) {
+        alert(error.message);
+      } else {
         window.location.href = 'dashboard.html';
-      } catch (err) {
-        alert(err.message);
       }
     });
   }
@@ -92,11 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const email = loginForm.loginEmail.value;
       const password = loginForm.loginPassword.value;
-      try {
-        await signInWithEmailAndPassword(auth, email, password);
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) {
+        alert(error.message);
+      } else {
         window.location.href = 'dashboard.html';
-      } catch (err) {
-        alert(err.message);
       }
     });
   }
@@ -109,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btn) {
       btn.addEventListener('click', async e => {
         e.preventDefault();
-        await signOut(auth);
+        await supabase.auth.signOut();
         window.location.href = 'index.html';
       });
     }
