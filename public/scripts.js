@@ -1,3 +1,26 @@
+import { initializeApp } from 'firebase/app';
+import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
+import { getAiLogic } from 'firebase/ai-logic';
+
+// Firebase configuration values are provided via window.CONFIG for local testing
+const firebaseConfig = {
+    apiKey: window.CONFIG?.FIREBASE_API_KEY || 'YOUR_API_KEY',
+    authDomain: window.CONFIG?.FIREBASE_AUTH_DOMAIN || 'YOUR_PROJECT.firebaseapp.com',
+    projectId: window.CONFIG?.FIREBASE_PROJECT_ID || 'YOUR_PROJECT_ID',
+    appId: window.CONFIG?.FIREBASE_APP_ID || 'YOUR_APP_ID'
+};
+
+// Initialize Firebase and App Check
+const app = initializeApp(firebaseConfig);
+initializeAppCheck(app, {
+    provider: new ReCaptchaV3Provider(window.CONFIG?.RECAPTCHA_SITE_KEY || 'YOUR_RECAPTCHA_SITE_KEY'),
+    isTokenAutoRefreshEnabled: true
+});
+
+// Prepare AI Logic (if available)
+const aiLogic = getAiLogic(app);
+console.log('✅ Firebase and App Check initialized.');
+
 // ScrollReveal animations for Hybrid Dancers site
 // Applies fade-in on hero content, slide-up on cards, and delayed Instagram reveal
 
