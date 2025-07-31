@@ -1,0 +1,7 @@
+{
+  "routes": [
+    { "src": "/offline", "dest": "/offline.html" },
+    { "handle": "filesystem" },
+    { "src": "/.*", "status": 404, "dest": "/error.html" }
+  ]
+}
