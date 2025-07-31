@@ -1,5 +1,7 @@
 import { SocialReelCarousel } from './components/SocialReelCarousel.js';
+import { SOCIAL_LINKS } from './socialLinks.js';
 console.log('✅ App initialized.');
+window.SOCIAL_LINKS = SOCIAL_LINKS;
 
 // ScrollReveal animations for Hybrid Dancers site
 // Applies fade-in on hero content, slide-up on cards, and delayed Instagram reveal
