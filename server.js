@@ -110,6 +110,27 @@ app.delete('/api/bookings/:id', (req, res) => {
 // Instagram oEmbed proxy
 app.get('/api/fetchInstagramEmbed', fetchInstagramEmbed);
 
+// Aggregate social feed
+app.get('/api/social-feed', async (req, res) => {
+  const reels = [
+    'https://www.instagram.com/p/CyGZc8UPL2g',
+    'https://www.instagram.com/p/CyDyapCrkYZ',
+    'https://www.instagram.com/p/Cx7OPawrQxt'
+  ];
+  try {
+    const ig = await Promise.all(
+      reels.map(url =>
+        fetch(`${req.protocol}://${req.get('host')}/api/fetchInstagramEmbed?url=${encodeURIComponent(url)}`)
+          .then(r => r.json())
+          .catch(() => ({ html: `<iframe src="${url}/embed" allowfullscreen loading="lazy"></iframe>` }))
+      )
+    );
+    res.json({ instagram: ig });
+  } catch (err) {
+    res.json({ instagram: reels.map(url => ({ html: `<iframe src="${url}/embed" allowfullscreen loading="lazy"></iframe>` })) });
+  }
+});
+
 // --- Logs API ---
 // Return the raw log entries used by automation agents and admin tools
 app.get('/api/logs', (req, res) => {

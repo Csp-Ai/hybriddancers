@@ -1,7 +1,10 @@
 import { SocialReelCarousel } from './components/SocialReelCarousel.js';
+import { SocialMediaShowcase } from './components/SocialMediaShowcase.js';
 import { SOCIAL_LINKS } from './socialLinks.js';
 console.log('✅ App initialized.');
 window.SOCIAL_LINKS = SOCIAL_LINKS;
+window.SocialReelCarousel = SocialReelCarousel;
+window.SocialMediaShowcase = SocialMediaShowcase;
 
 // ScrollReveal animations for Hybrid Dancers site
 // Applies fade-in on hero content, slide-up on cards, and delayed Instagram reveal
@@ -58,6 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             startCarousel();
         }
+    }
+
+    const showcase = document.getElementById('social-showcase');
+    if (showcase) {
+        SocialMediaShowcase(showcase);
     }
 
     if (typeof ScrollReveal !== 'undefined') {
