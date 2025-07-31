@@ -46,6 +46,7 @@ jobs:
           sed -i 's|SUPABASE_URL=.*|SUPABASE_URL=${{ secrets.SUPABASE_URL }}|' .env
           sed -i 's|SUPABASE_ANON_KEY=.*|SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}|' .env
           sed -i 's|OPENAI_API_KEY=.*|OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}|' .env
+          sed -i 's|IG_OEMBED_TOKEN=.*|IG_OEMBED_TOKEN=${{ secrets.IG_OEMBED_TOKEN }}|' .env
       - run: npm ci
       - run: pip install -r requirements.txt
       - run: supabase link --project-ref ${{ secrets.SUPABASE_PROJECT_REF }}
@@ -58,6 +59,7 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           working-directory: ./
           alias-domains: hybriddancers.com,www.hybriddancers.com
+          env: IG_OEMBED_TOKEN=${{ secrets.IG_OEMBED_TOKEN }}
 
   notify:
     if: github.event_name == 'pull_request'

@@ -1,3 +1,5 @@
+import { injectEmbed } from '../socialEmbed.utils.js';
+
 export async function SocialReelCarousel(container, reels = []) {
   if (!container) return;
 
@@ -50,19 +52,9 @@ export async function SocialReelCarousel(container, reels = []) {
       if (entry.isIntersecting) {
         const slide = entry.target;
         if (!slide.dataset.loaded) {
-          const api = `/api/fetchOEmbed?url=${encodeURIComponent(slide.dataset.url)}`;
-          fetch(api)
-            .then((r) => r.json())
-            .then((d) => {
-              if (d && d.html) {
-                slide.innerHTML = d.html;
-              } else {
-                slide.innerHTML = `<iframe src="${slide.dataset.url}/embed" allowfullscreen loading="lazy"></iframe>`;
-              }
-            })
-            .catch(() => {
-              slide.innerHTML = '<p class="reels-error">Unable to load reel.</p>';
-            });
+          injectEmbed(slide, slide.dataset.url).catch(() => {
+            slide.innerHTML = '<p class="reels-error">Unable to load reel.</p>';
+          });
           slide.dataset.loaded = '1';
         }
         o.unobserve(slide);
