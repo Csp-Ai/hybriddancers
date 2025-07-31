@@ -4,6 +4,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const path = require('path');
 const fs = require('fs');
 const { nanoid } = require('nanoid');
+const fetchInstagramEmbed = require('./api/fetchInstagramEmbed');
 
 const PORT = process.env.PORT || 4242;
 const DOMAIN_URL = process.env.DOMAIN_URL || `http://localhost:${PORT}`;
@@ -105,6 +106,9 @@ app.delete('/api/bookings/:id', (req, res) => {
   logAction('delete_booking', req.params.id);
   res.json({ id: req.params.id });
 });
+
+// Instagram oEmbed proxy
+app.get('/api/fetchInstagramEmbed', fetchInstagramEmbed);
 
 // --- Logs API ---
 // Return the raw log entries used by automation agents and admin tools
