@@ -150,6 +150,10 @@ This dashboard is secured through Firebase Authentication and only renders for a
 
 
 
+## ⟳ CI/CD Pipeline
+
+Pushing to the `main` branch triggers GitHub Actions to run tests, deploy Supabase migrations and edge functions, and publish the frontend to Vercel. Secrets for Supabase and Vercel must be configured in the repository settings.
+
 ## 📚 Documentation
 
 - [System Architecture](docs/architecture.md)
