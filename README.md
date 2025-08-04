@@ -44,19 +44,9 @@ The Express server now stores bookings in `data/bookings.json` and exposes a sma
 
 Agent scripts under `agents/` can analyze this data. Run `node agents/attendance-agent.js` to log attendance anomalies.
 
-### Email Confirmation Setup
+### Supabase Edge Functions
 
-`functions/registerForClass` sends confirmation emails via Nodemailer after saving a registration. Provide credentials for one of the services below:
-
-#### Gmail
-- GMAIL_USER – your Gmail address
-- GMAIL_PASS – app password for the account
-
-#### SendGrid
-- SENDGRID_API_KEY – your SendGrid API key
-
-Optionally set EMAIL_FROM to override the sender address.
-Set ADMIN_EMAIL to receive the daily signup summary from `functions/dailyClassSummary`.
+Custom logic lives under `supabase/functions`. For example, `register-booking` inserts class registrations, and `fetch-oembed` proxies social embeds.
 
 ### Environment Variables
 
