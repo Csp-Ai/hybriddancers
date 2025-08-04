@@ -31,5 +31,19 @@ Thank you for helping improve the Hybrid Dancers website! This project mixes a s
 - Keep functions small and well commented.
 - Use environment variables for secrets; never hard‑code API keys.
 - Ensure `pytest` passes before submitting.
+ 
+## Local Debug Logs
+
+During development you may want to capture verbose logs. Redirect output to a file ending in `-debug.log`, which is ignored by Git:
+
+```bash
+node server.js > server-debug.log 2>&1
+```
+
+Agent scripts write to `data/logs.json` for traceability. If you generate logs locally, restore that file before committing so log data isn't checked in:
+
+```bash
+git restore data/logs.json
+```
 
 We appreciate all issues and pull requests. Happy coding!
