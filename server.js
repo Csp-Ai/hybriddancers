@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs').promises;
 const { nanoid } = require('nanoid');
 const fetchOEmbed = require('./api/fetchOEmbed');
 
@@ -36,22 +36,22 @@ app.get('/config.js', (req, res) => {
 const bookingsFile = path.join(__dirname, 'data', 'bookings.json');
 const logsFile = path.join(__dirname, 'data', 'logs.json');
 
-function readJson(file) {
+async function readJson(file) {
   try {
-    return JSON.parse(fs.readFileSync(file));
+    return JSON.parse(await fs.readFile(file, 'utf8'));
   } catch (e) {
     return [];
   }
 }
 
-function writeJson(file, data) {
-  fs.writeFileSync(file, JSON.stringify(data, null, 2));
+async function writeJson(file, data) {
+  await fs.writeFile(file, JSON.stringify(data, null, 2));
 }
 
-function logAction(action, details) {
-  const logs = readJson(logsFile);
+async function logAction(action, details) {
+  const logs = await readJson(logsFile);
   logs.push({ time: new Date().toISOString(), action, details });
-  writeJson(logsFile, logs);
+  await writeJson(logsFile, logs);
 }
 
 app.post('/create-checkout-session', async (req, res) => {
@@ -71,7 +71,7 @@ app.post('/create-checkout-session', async (req, res) => {
       cancel_url: `${DOMAIN_URL}/cancel.html`,
     });
 
-    logAction('create_checkout_session', session.id);
+    await logAction('create_checkout_session', session.id);
     res.json({ id: session.id });
   } catch (err) {
     console.error(err);
@@ -80,30 +80,30 @@ app.post('/create-checkout-session', async (req, res) => {
 });
 
 // --- Booking API ---
-app.get('/api/bookings', (req, res) => {
+app.get('/api/bookings', async (req, res) => {
   const { email } = req.query;
-  const bookings = readJson(bookingsFile);
+  const bookings = await readJson(bookingsFile);
   const result = email ? bookings.filter(b => b.email === email) : bookings;
   res.json(result);
 });
 
-app.post('/api/bookings', (req, res) => {
-  const bookings = readJson(bookingsFile);
+app.post('/api/bookings', async (req, res) => {
+  const bookings = await readJson(bookingsFile);
   const booking = { id: nanoid(), ...req.body, created: new Date().toISOString() };
   bookings.push(booking);
-  writeJson(bookingsFile, bookings);
-  logAction('create_booking', booking.id);
+  await writeJson(bookingsFile, bookings);
+  await logAction('create_booking', booking.id);
   res.json(booking);
 });
 
-app.delete('/api/bookings/:id', (req, res) => {
-  const bookings = readJson(bookingsFile);
+app.delete('/api/bookings/:id', async (req, res) => {
+  const bookings = await readJson(bookingsFile);
   const remaining = bookings.filter(b => b.id !== req.params.id);
   if (remaining.length === bookings.length) {
     return res.status(404).json({ error: 'Not found' });
   }
-  writeJson(bookingsFile, remaining);
-  logAction('delete_booking', req.params.id);
+  await writeJson(bookingsFile, remaining);
+  await logAction('delete_booking', req.params.id);
   res.json({ id: req.params.id });
 });
 
@@ -133,15 +133,15 @@ app.get('/api/social-feed', async (req, res) => {
 
 // --- Logs API ---
 // Return the raw log entries used by automation agents and admin tools
-app.get('/api/logs', (req, res) => {
-  const logs = readJson(logsFile);
+app.get('/api/logs', async (req, res) => {
+  const logs = await readJson(logsFile);
   res.json(logs);
 });
 
-app.post('/api/logs', (req, res) => {
+app.post('/api/logs', async (req, res) => {
   const { action, details } = req.body || {};
   if (action) {
-    logAction(action, details || '');
+    await logAction(action, details || '');
     res.json({ status: 'logged' });
   } else {
     res.status(400).json({ error: 'action required' });

@@ -1,16 +1,16 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 
 const cache = new Map();
 const TTL = 60 * 60 * 1000; // one hour
 
-function logError(msg) {
+async function logError(msg) {
   console.error(msg);
   try {
     const file = path.join(__dirname, '..', 'data', 'logs.json');
-    const logs = JSON.parse(fs.readFileSync(file, 'utf8'));
+    const logs = JSON.parse(await fs.readFile(file, 'utf8'));
     logs.push({ time: new Date().toISOString(), action: 'oembed_error', details: msg });
-    fs.writeFileSync(file, JSON.stringify(logs, null, 2));
+    await fs.writeFile(file, JSON.stringify(logs, null, 2));
   } catch (e) {
     console.error('Failed to write log', e);
   }
@@ -60,7 +60,7 @@ module.exports = async function fetchOEmbed(req, res) {
     cache.set(normalized, { time: Date.now(), data });
     res.json(data);
   } catch (err) {
-    logError(err.message);
+    await logError(err.message);
     res.json({ html: `<iframe src="${normalized}/embed" allowfullscreen loading="lazy"></iframe>` });
   }
 };

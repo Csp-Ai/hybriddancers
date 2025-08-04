@@ -2,7 +2,7 @@
 // Generates 30-day booking forecasts for each class using a simple moving average.
 // Designed for clarity and global reuse. Logs results to data/logs.json.
 
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 const { logToSupabase } = require('./supabase-log');
 
@@ -11,25 +11,25 @@ const logFile = path.join(__dirname, '..', 'data', 'logs.json');
 
 // ---------- Utility Functions ----------
 // Read JSON from a file. Returns an empty array on error.
-function readJson(file) {
+async function readJson(file) {
   try {
-    return JSON.parse(fs.readFileSync(file));
+    return JSON.parse(await fs.readFile(file, 'utf8'));
   } catch (e) {
     return [];
   }
 }
 
 // Write JSON to a file with indentation for readability.
-function writeJson(file, data) {
-  fs.writeFileSync(file, JSON.stringify(data, null, 2));
+async function writeJson(file, data) {
+  await fs.writeFile(file, JSON.stringify(data, null, 2));
 }
 
 // Append an action entry to the shared log file.
-function logAction(action, details) {
-  const logs = readJson(logFile);
+async function logAction(action, details) {
+  const logs = await readJson(logFile);
   logs.push({ time: new Date().toISOString(), action, details });
-  writeJson(logFile, logs);
-  logToSupabase(action, details);
+  await writeJson(logFile, logs);
+  await logToSupabase(action, details);
 }
 
 // ---------- Forecast Logic ----------
@@ -95,14 +95,14 @@ function forecastBookings(bookings, lookbackDays = 30, horizonDays = 30) {
 }
 
 // Run the agent using the stored bookings file and log the results.
-function run() {
-  const bookings = readJson(bookingsFile);
+async function run() {
+  const bookings = await readJson(bookingsFile);
   if (!bookings.length) {
     console.log('No bookings available for forecasting');
     return;
   }
   const results = forecastBookings(bookings);
-  logAction('booking_forecast', JSON.stringify(results));
+  await logAction('booking_forecast', JSON.stringify(results));
   console.log(JSON.stringify(results, null, 2));
 }
 

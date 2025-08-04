@@ -1,27 +1,27 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 const { logToSupabase } = require('./supabase-log');
 
 const bookingsFile = path.join(__dirname, '..', 'data', 'bookings.json');
 const logFile = path.join(__dirname, '..', 'data', 'logs.json');
 
-function readJson(file) {
+async function readJson(file) {
   try {
-    return JSON.parse(fs.readFileSync(file));
+    return JSON.parse(await fs.readFile(file, 'utf8'));
   } catch (e) {
     return [];
   }
 }
 
-function writeJson(file, data) {
-  fs.writeFileSync(file, JSON.stringify(data, null, 2));
+async function writeJson(file, data) {
+  await fs.writeFile(file, JSON.stringify(data, null, 2));
 }
 
-function logAction(action, details) {
-  const logs = readJson(logFile);
+async function logAction(action, details) {
+  const logs = await readJson(logFile);
   logs.push({ time: new Date().toISOString(), action, details });
-  writeJson(logFile, logs);
-  logToSupabase(action, details);
+  await writeJson(logFile, logs);
+  await logToSupabase(action, details);
 }
 
 function filterBookings(bookings, days) {
@@ -99,11 +99,11 @@ function detectTrends(bookings, periods = [30, 60, 90]) {
   return results;
 }
 
-function run() {
-  const bookings = readJson(bookingsFile);
+async function run() {
+  const bookings = await readJson(bookingsFile);
   const summaries = detectTrends(bookings);
   if (summaries.length) {
-    logAction('trends_analysis', summaries.join(';'));
+    await logAction('trends_analysis', summaries.join(';'));
     console.log('Trends:', summaries.join('\n'));
   } else {
     console.log('No significant trends found');

@@ -1,27 +1,27 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 const { logToSupabase } = require('./supabase-log');
 
 const bookingsFile = path.join(__dirname, '..', 'data', 'bookings.json');
 const logFile = path.join(__dirname, '..', 'data', 'logs.json');
 
-function readJson(file) {
+async function readJson(file) {
   try {
-    return JSON.parse(fs.readFileSync(file));
+    return JSON.parse(await fs.readFile(file, 'utf8'));
   } catch (e) {
     return [];
   }
 }
 
-function writeJson(file, data) {
-  fs.writeFileSync(file, JSON.stringify(data, null, 2));
+async function writeJson(file, data) {
+  await fs.writeFile(file, JSON.stringify(data, null, 2));
 }
 
-function logAction(action, details) {
-  const logs = readJson(logFile);
+async function logAction(action, details) {
+  const logs = await readJson(logFile);
   logs.push({ time: new Date().toISOString(), action, details });
-  writeJson(logFile, logs);
-  logToSupabase(action, details);
+  await writeJson(logFile, logs);
+  await logToSupabase(action, details);
 }
 
 function getTopDay(bookings) {
@@ -55,8 +55,8 @@ function getMonthlyTrend(bookings) {
   return `last_month=${last};prev_month=${prev};diff=${diff}`;
 }
 
-function run() {
-  const bookings = readJson(bookingsFile);
+async function run() {
+  const bookings = await readJson(bookingsFile);
   if (!bookings.length) {
     console.log('No bookings to analyze');
     return;
@@ -65,7 +65,7 @@ function run() {
   const topClass = getTopClass(bookings);
   const trend = getMonthlyTrend(bookings);
   const details = `top_day=${topDay};top_class=${topClass}${trend ? ';' + trend : ''}`;
-  logAction('insights_generated', details);
+  await logAction('insights_generated', details);
   console.log('Insights:', details);
 }
 

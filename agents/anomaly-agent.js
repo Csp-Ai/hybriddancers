@@ -3,30 +3,30 @@
 // Output is a list of anomalies with explanatory reasons.
 // Logs actions to data/logs.json for traceability.
 
-const fs = require('fs');
+const fs = require('fs').promises;
 const path = require('path');
 const { logToSupabase } = require('./supabase-log');
 
 const bookingsFile = path.join(__dirname, '..', 'data', 'bookings.json');
 const logFile = path.join(__dirname, '..', 'data', 'logs.json');
 
-function readJson(file) {
+async function readJson(file) {
   try {
-    return JSON.parse(fs.readFileSync(file));
+    return JSON.parse(await fs.readFile(file, 'utf8'));
   } catch (e) {
     return [];
   }
 }
 
-function writeJson(file, data) {
-  fs.writeFileSync(file, JSON.stringify(data, null, 2));
+async function writeJson(file, data) {
+  await fs.writeFile(file, JSON.stringify(data, null, 2));
 }
 
-function logAction(action, details) {
-  const logs = readJson(logFile);
+async function logAction(action, details) {
+  const logs = await readJson(logFile);
   logs.push({ time: new Date().toISOString(), action, details });
-  writeJson(logFile, logs);
-  logToSupabase(action, details);
+  await writeJson(logFile, logs);
+  await logToSupabase(action, details);
 }
 
 function stats(counts) {
@@ -89,11 +89,11 @@ function detectAnomalies(bookings) {
   return anomalies;
 }
 
-function run() {
-  const bookings = readJson(bookingsFile);
+async function run() {
+  const bookings = await readJson(bookingsFile);
   const anomalies = detectAnomalies(bookings);
   if (anomalies.length) {
-    logAction('anomaly_detected', JSON.stringify(anomalies));
+    await logAction('anomaly_detected', JSON.stringify(anomalies));
     console.log(JSON.stringify(anomalies, null, 2));
   } else {
     console.log('No anomalies found');
