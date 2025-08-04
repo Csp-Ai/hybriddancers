@@ -1,5 +1,4 @@
-import { auth } from './auth.js';
-import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+import { supabase } from './supabaseClient.js';
 
 const availableClasses = [
   { id: 1, name: 'Hip Hop Basics', type: 'Hip Hop', date: '2024-08-05', time: '6:00 PM', location: 'Studio A' },
@@ -14,16 +13,16 @@ const upcomingEvents = [
 
 let schedule = [];
 let journalEntries = [];
+let currentUser = null;
 
 function getStorageKey(key) {
-  const user = auth.currentUser;
-  return user ? `${key}-${user.uid}` : key;
+  return currentUser ? `${key}-${currentUser.id}` : key;
 }
 
 async function loadStoredData() {
   const journal = localStorage.getItem(getStorageKey('journal'));
   journalEntries = journal ? JSON.parse(journal) : [];
-  const resp = await fetch(`/api/bookings?email=${encodeURIComponent(auth.currentUser.email)}`);
+  const resp = await fetch(`/api/bookings?email=${encodeURIComponent(currentUser.email)}`);
   if (resp.ok) {
     schedule = await resp.json();
   } else {
@@ -127,8 +126,8 @@ function setupEventListeners() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            email: auth.currentUser.email,
-            name: auth.currentUser.email,
+            email: currentUser.email,
+            name: currentUser.email,
             classType: cls.name,
             date: cls.date,
             time: cls.time,
@@ -170,7 +169,7 @@ function setupEventListeners() {
 }
 
 async function initDashboard() {
-  document.getElementById('userEmail').textContent = auth.currentUser.email;
+  document.getElementById('userEmail').textContent = currentUser.email;
   document.getElementById('membershipStatus').textContent = 'Active Member';
   await loadStoredData();
   renderClasses(availableClasses);
@@ -182,10 +181,22 @@ async function initDashboard() {
   setupEventListeners();
 }
 
-onAuthStateChanged(auth, user => {
-  if (!user) {
+async function init() {
+  const {
+    data: { session }
+  } = await supabase.auth.getSession();
+  currentUser = session?.user || null;
+  if (!currentUser) {
     window.location.href = 'login.html';
-  } else {
-    initDashboard();
+    return;
   }
-});
+  await initDashboard();
+  supabase.auth.onAuthStateChange((_event, session) => {
+    currentUser = session?.user || null;
+    if (!currentUser) {
+      window.location.href = 'login.html';
+    }
+  });
+}
+
+init();
