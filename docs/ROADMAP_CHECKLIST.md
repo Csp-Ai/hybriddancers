@@ -1,11 +1,9 @@
 # Roadmap Checklist
 
-The following tasks summarize the short-term goals outlined in `TECHNICAL_ROADMAP.md`.
+The following tasks summarize the near-term goals outlined in [TECHNICAL_ROADMAP.md](TECHNICAL_ROADMAP.md).
 
-- [ ] Clean up API keys and rely solely on environment variables
+- [ ] Remove hard-coded API keys and use environment variables
+- [ ] Expand automated tests for booking and auth flows
+- [ ] Publish privacy policy and terms of service in production
+- [ ] Improve mobile user experience and responsive layout
 - [x] Enforce HTTPS for all routes and assets
-- [ ] Publish a privacy policy and terms of service
-- [ ] Extend automated tests for booking and auth flows
-- [ ] Improve mobile user experience and layout
-
-
